@@ -98,13 +98,42 @@
         <v-container class="py-5 my-5">
           <v-row class="pa-3 py-5 my-5" no-gutters>
             <v-col cols="12" md="12" align="center" justify="center">
-              <v-card 
+              <div class="hero-img-wrap">
+                <div class="hero-img-container">
+                  <v-img
+                    width="100%"
+                    height="100%"
+                    class="hero-img"
+                    :src="require('@/assets/image/profile_.png')">
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center">
+                        <v-progress-circular
+                          indeterminate
+                          color="grey lighten-5">
+                        </v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+                  <!-- <img :src="require('@/assets/image/profile_.png')" sizes="(max-width: 479px) 100vw, (max-width: 767px) 648px, (max-width: 991px) 100vw, 65vw" class="hero-img"> -->
+                  <div id="hero-img-shadow-1" class="hero-img-shadow-wrap">
+                    <div class="hero-img-shadow"></div>
+                  </div>
+                  <div id="hero-img-shadow-2" class="hero-img-shadow-wrap hero-img-shadow-wrap--intro">
+                    <div class="hero-img-shadow"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <v-card 
                 width="300"
                 height="300"
-                class="rounded-circle box-shadow">
+                class="rounded-circle hero-img-shadow">
                 <v-img
-                  width="100%"
-                  height="100%"
+                  width="90%"
+                  height="90%"
                   :src="require('@/assets/image/profile_.png')">
                   <template v-slot:placeholder>
                     <v-row
@@ -118,7 +147,7 @@
                     </v-row>
                   </template>
                 </v-img>
-              </v-card>
+              </v-card> -->
 
               <div class="header-title mt-7">Alfian An - Naufal Nuha</div>
               <div class="subheader-title mt-7">WEB Development</div>
@@ -650,5 +679,145 @@ export default {
   font-family: 'Inter;sans-serif', cursive !important;
   font-size: 30px;
   color: #ff4757
+}
+
+/* CUSTOME */
+/* IMG WRAP ON */
+@media only screen and (min-width: 992px) and (max-height: 800px){}
+.hero-img-wrap {
+  margin-bottom: 48px;
+  min-width: 280px;
+  min-height: 280px;
+  width: 280px;
+  height: 280px;
+  max-width: 280px;
+  max-height: 280px;
+}
+
+.hero-img-wrap {
+  will-change: opacity;
+  animation: heroImgWrap 0.8s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-delay: 0.8s;
+}
+
+.hero-img-wrap {
+  width: 25vw;
+  height: 25vw;
+  max-height: 40vh;
+  max-width: 40vh;
+  min-height: 350px;
+  min-width: 350px;
+  margin-bottom: 64px;
+}
+
+.hero-img-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* IMG CONTAINTER */
+.hero-img-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid hsla(0,0%,100%,.3);
+  border-radius: 50%;
+  background-color: hsla(0,0%,84%,.5);
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* IMG */
+.hero-img {
+  will-change: transform;
+  animation: heroImgScale 0.8s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-delay: 0.8s;
+}
+
+.hero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 50%;
+  z-index: 7
+}
+
+/* HERO 1 */
+
+#hero-img-shadow-1 {
+  will-change: opacity;
+  animation: heroImgShadow1 0.8s ease;
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  animation-delay: 1.5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: backwards;
+  animation-play-state: running;
+  animation-name: heroImgShadow1;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-delay: 1.5s;
+}
+.hero-img-shadow-wrap {
+  position: absolute;
+  left: -20%;
+  top: -20%;
+  right: 0;
+  bottom: 0;
+  width: 140%;
+  height: 140%;
+  padding: 20%;
+  border-radius: 50%;
+  -webkit-filter: blur(20px);
+  filter: blur(20px);
+}
+.hero-img-shadow {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: radial-gradient(circle farthest-side at 100% 100%,#9873ff,rgba(152,115,255,0)),radial-gradient(circle farthest-side at 100% 0,#0ba5f7,rgba(85,196,255,0)),radial-gradient(circle farthest-side at 0 0,#ff763c,rgba(255,176,60,0)),radial-gradient(circle farthest-side at 0 100%,#ff5aaa,rgba(255,90,170,0));
+}
+
+/* HERO 2 */
+
+#hero-img-shadow-2 {
+    will-change: opacity, transform;
+    animation: heroImgShadow2 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    animation-delay: 1.5s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-play-state: running;
+    animation-name: heroImgShadow2;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-delay: 1.5s;
+}
+.hero-img-shadow-wrap.hero-img-shadow-wrap--intro {
+    z-index: 1;
+}
+
+.hero-img-shadow-wrap {
+    position: absolute;
+    left: -20%;
+    top: -20%;
+    right: 0;
+    bottom: 0;
+    width: 140%;
+    height: 140%;
+    padding: 20%;
+    border-radius: 50%;
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
 }
 </style>
