@@ -510,6 +510,7 @@
 </template>
 
 <script>
+import { createSEOMeta } from '@/utils/seo'
 export default {
   data() {
     return {
@@ -612,8 +613,21 @@ export default {
           title: "CSS",
           image: require('@/assets/logo/css.png')
         },
-      ]
+      ],
+      // SEO
+      content: {
+        url: '',
+        title: 'Beranda',
+        description: 'Portofolio Nuha',
+        image: require('@/assets/logo/logo.png'),
+      }
     }
+  },
+  head() {
+    return {
+      title: this.content.title,
+      meta: createSEOMeta(this.content),
+    };
   },
   watch: {
     $route(to, from) {
