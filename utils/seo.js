@@ -46,5 +46,6 @@ export const createSEOMeta = (data) => [
     },
     {
       name: 'facebook-domain-verification', content: '8v8gwbkf1ebteboonludcr2ys8puu0'
-    }
+    },
+    { name: "google-site-verification", content: "i7PN9Mez81C9wkiqItlLxr1X9HceiEaw10Ok7dlNYlc" }
   ]
