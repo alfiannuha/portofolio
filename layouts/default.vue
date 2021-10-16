@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header/>
-    <v-sheet>
+    <v-sheet :class="$route.name == 'about' ? 'about' : ''">
       <Nuxt />
     </v-sheet>
     <v-fab-transition>
@@ -14,7 +14,7 @@
         fixed
         bottom
         right
-        color="#ff4757"
+        class="about"
         to="/"
         @click="$vuetify.goTo('#app', {duration: 500, offset: 0})">
         <v-icon>mdi-chevron-up</v-icon>
@@ -61,3 +61,10 @@ export default {
   
 }
 </script>
+<style scoped>
+.about{
+  background: #654ea3;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
+}
+</style>

@@ -1,28 +1,39 @@
 <template>
   <div class="mb-12">
-
     <v-dialog v-model="dialog.request" width="500" persistent>
       <v-card class="rounded-lg box-shadow">
         <v-card-title class="body-1">
           Please request with social media below
           <v-spacer></v-spacer>
-          <v-icon color="red" @click="dialog.request = false">mdi-close-circle</v-icon>
+          <v-icon color="red" @click="dialog.request = false"
+            >mdi-close-circle</v-icon
+          >
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text>
           <v-row no-gutters class="mt-7">
-            <v-col cols="6" md="3"
+            <v-col
+              cols="6"
+              md="3"
               v-for="(l, index) in social_media"
-              :key="index">
+              :key="index"
+            >
               <div class="text-center" @click="goTo(l.link)">
-                <img :alt="l.title" class="cursor-pointer" width="50" height="50" :src="l.icon" />
+                <img
+                  :alt="l.title"
+                  class="cursor-pointer"
+                  width="50"
+                  height="50"
+                  :src="l.icon"
+                />
               </div>
             </v-col>
           </v-row>
-          <div 
-            class="mt-5 pa-2 white--text rounded-lg" 
-            style="font-size: 16px;background: rgb(246,128,140);background: linear-gradient(90deg, rgba(246,128,140,1) 0%, rgba(233,113,212,1) 100%);">
-            Write clearly your request, in addition to whatsapp and telegram, include your number where we can be contacted
+          <div
+            class="mt-5 pa-2 white--text rounded-lg primary-color"
+            style="font-size: 16px">
+            Write clearly your request, in addition to whatsapp and telegram,
+            include your number where we can be contacted
           </div>
         </v-card-text>
       </v-card>
@@ -33,7 +44,7 @@
         <v-card-title class="body-1">
           {{ detail.title }}
           <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs } ">
+            <template v-slot:activator="{ on, attrs }">
               <v-btn
                 v-on="on"
                 v-bind="attrs"
@@ -42,18 +53,26 @@
                 color="primary"
                 icon
                 target="_blank"
-                :href="detail.website">
+                :href="detail.website"
+              >
                 <v-icon>mdi-link</v-icon>
               </v-btn>
             </template>
             <span>Preview in new Window</span>
           </v-tooltip>
           <v-spacer></v-spacer>
-          <v-icon color="red" @click="dialog.website = false">mdi-close-circle</v-icon>
+          <v-icon color="red" @click="dialog.website = false"
+            >mdi-close-circle</v-icon
+          >
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text style="height: 800px" class="pa-3">
-         <iframe :src="detail.website" frameborder="0" width="100%" height="600"></iframe>
+          <iframe
+            :src="detail.website"
+            frameborder="0"
+            width="100%"
+            height="600"
+          ></iframe>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -63,7 +82,7 @@
         <v-card-title class="body-1">
           {{ detail.title }}
           <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs } ">
+            <template v-slot:activator="{ on, attrs }">
               <v-btn
                 v-on="on"
                 v-bind="attrs"
@@ -72,18 +91,33 @@
                 color="primary"
                 icon
                 target="_blank"
-                :href="detail.website">
+                :href="detail.website"
+              >
                 <v-icon>mdi-link</v-icon>
               </v-btn>
             </template>
             <span>Preview in new Window</span>
           </v-tooltip>
           <v-spacer></v-spacer>
-          <v-icon color="red" @click="dialog.detail = false">mdi-close-circle</v-icon>
+          <v-icon color="red" @click="dialog.detail = false"
+            >mdi-close-circle</v-icon
+          >
         </v-card-title>
         <v-divider></v-divider>
-        <v-card-text>
+        <v-card-text> </v-card-text>
+      </v-card>
+    </v-dialog>
 
+    <v-dialog v-model="dialog.description" width="76%" scrollable persistent>
+      <v-card class="rounded-lg box-shadow">
+        <v-card-title class="body-1 primary-color white--text">
+          {{ detail.title }}
+          <v-spacer></v-spacer>
+          <v-icon color="white" @click="dialog.description = false">mdi-close-circle</v-icon>
+        </v-card-title>
+        <v-divider></v-divider>
+        <v-card-text class="text-justify subtitle-2 pa-5" style="max-height: 600px"> 
+          <div v-html="detail.detail_desc"></div>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -98,68 +132,54 @@
         <v-container class="py-5 my-5">
           <v-row class="pa-3 py-5 my-5" no-gutters>
             <v-col cols="12" md="12" align="center" justify="center">
-              <div class="hero-img-wrap">
+              <div class="hero-img-wrap mt-10">
                 <div class="hero-img-container">
                   <v-img
                     width="100%"
                     height="100%"
                     class="hero-img"
-                    :src="require('@/assets/image/profile_.png')">
+                    :src="require('@/assets/image/profile_.png')"
+                  >
                     <template v-slot:placeholder>
                       <v-row
                         class="fill-height ma-0"
                         align="center"
-                        justify="center">
+                        justify="center"
+                      >
                         <v-progress-circular
                           indeterminate
-                          color="grey lighten-5">
+                          color="grey lighten-5"
+                        >
                         </v-progress-circular>
                       </v-row>
                     </template>
                   </v-img>
-                  <!-- <img :src="require('@/assets/image/profile_.png')" sizes="(max-width: 479px) 100vw, (max-width: 767px) 648px, (max-width: 991px) 100vw, 65vw" class="hero-img"> -->
                   <div id="hero-img-shadow-1" class="hero-img-shadow-wrap">
                     <div class="hero-img-shadow"></div>
                   </div>
-                  <div id="hero-img-shadow-2" class="hero-img-shadow-wrap hero-img-shadow-wrap--intro">
+                  <div
+                    id="hero-img-shadow-2"
+                    class="hero-img-shadow-wrap hero-img-shadow-wrap--intro"
+                  >
                     <div class="hero-img-shadow"></div>
                   </div>
                 </div>
               </div>
 
-              <!-- <v-card 
-                width="300"
-                height="300"
-                class="rounded-circle hero-img-shadow">
-                <v-img
-                  width="90%"
-                  height="90%"
-                  :src="require('@/assets/image/profile_.png')">
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center">
-                      <v-progress-circular
-                        indeterminate
-                        color="grey lighten-5">
-                      </v-progress-circular>
-                    </v-row>
-                  </template>
-                </v-img>
-              </v-card> -->
-
-              <div class="header-title mt-7">Alfian An - Naufal Nuha</div>
+              <div class="header-title mt-5">Alfian An - Naufal Nuha</div>
               <div class="subheader-title mt-7">WEB Development</div>
               <div class="mt-7">
                 <v-btn
-                  color="primary"
-                  dense
+                  style="
+                    color: white;
+                    border-radius: 15px;
+                    background: #b57cee;
+                    box-shadow: inset -20px -20px 60px #9a69ca,
+                      inset 20px 20px 60px #d08fff;
+                  "
                   @click="dialog.request = true"
-                  text>
-                  <span class="text-h6">
-                    Start a Project Request
-                  </span>
+                >
+                  <span style="font-size: 15px"> Start a Project Request </span>
                   <v-icon right>mdi-chevron-triple-right</v-icon>
                 </v-btn>
               </div>
@@ -169,22 +189,21 @@
       </section>
     </v-img>
 
-    <section id="project" :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
-      <v-container style="" :class="$vuetify.breakpoint.mdAndDown ? 'py-6': 'py-16 my-16'">
+    <section
+      id="project"
+      :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''"
+    >
+      <v-container
+        style=""
+        :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-16 my-16'"
+      >
         <v-row class="pa-3 py-12" align="center" no-gutters>
           <v-col cols="12" md="6">
-            <p
-              class="
-                text-h3
-                line-text-first
-                text-capitalize 
-                text-left
-                mt-5
-              ">
+            <p class="text-h3 line-text-first text-capitalize text-left mt-5">
               Projects
             </p>
             <p class="text-h3" style="color: #d31145">
-              Beberapa project yang telah saya buat 
+              Beberapa project yang telah saya buat
             </p>
           </v-col>
           <v-col cols="12" md="6" class="pr-0 pl-0 custom__margin">
@@ -192,8 +211,8 @@
               alt="sodapos"
               height="auto"
               width="500"
-              style="margin:auto;z-index: 1"
-              :src="require('@/assets/image/contactus.png')"
+              style="margin: auto; z-index: 1"
+              :src="require('@/assets/image/project.png')"
             >
             </v-img>
           </v-col>
@@ -201,76 +220,91 @@
 
         <!-- PROJECT -->
         <v-row no-gutters class="mt-5">
-          <v-col cols="12" md="6" class="pa-3" v-for="(l,index) in  projects" :key="index">
-              <v-card class="rounded-lg box-shadow" width="1000">
-                <v-hover v-slot="{ hover }">
-                  <v-img
-                    :src="l.image">
-                    <v-expand-transition>
-                      <div
-                        v-if="hover"
-                        class="d-flex transition-fast-in-fast-out grey darken-4 v-card--reveal text-h2 white--text"
-                        style="height: 100%;">
-                        <v-btn @click="preview(l)">
-                          Preview
-                          <v-icon right>mdi-open-in-new</v-icon>
-                        </v-btn>
-                      </div>
-                    </v-expand-transition>
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center">
-                        <v-progress-circular
-                          indeterminate
-                          color="grey lighten-5">
-                        </v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
-                </v-hover>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-3"
+            v-for="(l, index) in projects"
+            :key="index"
+          >
+            <v-expansion-panels accordion>
+              <v-expansion-panel class="project">
+                <v-expansion-panel-header hide-actions class="pa-0">
+                  <v-hover v-slot="{ hover }">
+                    <v-img :src="l.image">
+                      <v-expand-transition>
+                        <div
+                          v-if="hover"
+                          class="
+                            d-flex
+                            transition-fast-in-fast-out
+                            grey
+                            darken-4
+                            v-card--reveal
+                            text-h2
+                            white--text
+                          "
+                          style="height: 100%"
+                        >
+                          <v-btn @click="preview(l)">
+                            Preview
+                            <v-icon right>mdi-open-in-new</v-icon>
+                          </v-btn>
+                        </div>
+                      </v-expand-transition>
+                      <template v-slot:placeholder>
+                        <v-row
+                          class="fill-height ma-0"
+                          align="center"
+                          justify="center"
+                        >
+                          <v-progress-circular
+                            indeterminate
+                            color="grey lighten-5"
+                          >
+                          </v-progress-circular>
+                        </v-row>
+                      </template>
+                    </v-img>
+                  </v-hover>
+                </v-expansion-panel-header>
                 <v-divider></v-divider>
-                <v-card-text class="d-flex subtitle-1 font-weight-bold">
-                  {{ l.title }}
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    @click="show = !show; "
-                    dense
-                    small
-                    color="pink"
-                    elevation="0"
-                    text>
-                    Detail Project
-                  </v-btn>
-                </v-card-text>
-                <v-expand-transition>
-                  <div v-show="show">
-                    <v-divider></v-divider>
-                    <v-card-text>
-                      Aliquet viverra justo fermentum massa quisque rhoncus nunc sit auctor nostra litora erat fames tristique eleifend tellus ullamcorper semper vel interdum per letius vitae non leo vivamus convallis nullam porta conubia ligula iaculis elit cubilia diam placerat dignissim himenaeos maecenas
-                    </v-card-text>
+                <v-expansion-panel-header>
+                  <template>
+                    <div class="white--text" style="font-weight:500">{{ l.title }}</div>
+                  </template>
+                  <template v-slot:actions>
+                    <v-icon color="white"> mdi-chevron-down </v-icon>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content class="pt-5 white--text">
+                  <div v-html="l.description"></div>
+                  <div
+                    style="width: 150px !important"
+                    class="mt-3 text-first hover-link cursor-pointer"
+                    v-show="l.view"
+                    @click="detailDesc(l)">
+                    Selengkapnya ...
                   </div>
-                </v-expand-transition>
-              </v-card>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
           </v-col>
         </v-row>
       </v-container>
     </section>
 
-
-    <section id="skill" :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
-      <v-container style="" :class="$vuetify.breakpoint.mdAndDown ? 'py-6': 'py-16 my-16'">
+    <section
+      id="skill"
+      :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''"
+    >
+      <v-container
+        style=""
+        :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-16 my-16'"
+      >
         <v-row class="pa-3 py-12" align="center" no-gutters>
           <v-col cols="12" md="6">
-            <p
-              class="
-                text-h3
-                line-text-first
-                text-capitalize 
-                text-left
-                mt-5
-              ">
+            <p class="text-h3 line-text-first text-capitalize text-left mt-5">
               Skill
             </p>
             <p class="text-h3" style="color: #d31145">
@@ -282,8 +316,9 @@
               alt="sodapos"
               height="auto"
               width="500"
-              style="margin:auto;z-index: 1"
-              :src="require('@/assets/image/contactus.png')">
+              style="margin: auto; z-index: 1"
+              :src="require('@/assets/image/study.png')"
+            >
             </v-img>
           </v-col>
         </v-row>
@@ -291,232 +326,335 @@
         <!-- SKILL -->
         <v-row no-gutters class="mt-5">
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/php.png')">
+            <v-img :src="require('@/assets/logo/php.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              PHP
-            </div>
+            <div class="text-center mt-3">PHP</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/html.png')">
+            <v-img :src="require('@/assets/logo/html.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              HTML
-            </div>
+            <div class="text-center mt-3">HTML</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/css.png')">
+            <v-img :src="require('@/assets/logo/css.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              CSS
-            </div>
+            <div class="text-center mt-3">CSS</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/js.png')">
+            <v-img :src="require('@/assets/logo/js.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              Javascript
-            </div>
+            <div class="text-center mt-3">Javascript</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/vue.png')">
+            <v-img :src="require('@/assets/logo/vue.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              Vue js
-            </div>
+            <div class="text-center mt-3">Vue js</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/nuxt.png')">
+            <v-img :src="require('@/assets/logo/nuxt.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">
-              Nuxt js
-            </div>
+            <div class="text-center mt-3">Nuxt js</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/mysql.png')">
+            <v-img :src="require('@/assets/logo/mysql.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-16 pt-8">
-              MySQL
-            </div>
+            <div class="text-center mt-16 pt-8">MySQL</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/codeigniter.png')">
+            <v-img :src="require('@/assets/logo/codeigniter.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-5">
-              CodeIgniter
-            </div>
+            <div class="text-center mt-5">CodeIgniter</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-              <v-img
-                :src="require('@/assets/logo/laravel.png')">
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center">
-                    <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5">
-                    </v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
+            <v-img :src="require('@/assets/logo/laravel.png')">
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
+                  </v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
             <div class="text-center mt-10">
-            <v-badge content="Ongoing" color="green">
-              Laravel
-            </v-badge>
+              <v-badge content="Ongoing" color="green"> Laravel </v-badge>
             </div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              width="400"
-              :src="require('@/assets/logo/bootstrap.png')">
+            <v-img width="400" :src="require('@/assets/logo/bootstrap.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-16">
-              Bootstrap
-            </div>
+            <div class="text-center mt-16">Bootstrap</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img
-              :src="require('@/assets/logo/vuetify.png')">
+            <v-img :src="require('@/assets/logo/vuetify.png')">
               <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5">
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
                   </v-progress-circular>
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-5">
-              Vuetify
-            </div>
+            <div class="text-center mt-5">Vuetify</div>
           </v-col>
         </v-row>
       </v-container>
     </section>
 
+    <section id="contact">
+      <!-- <v-img
+        alt="section contact"
+        width="100%"
+        height="auto"
+        :src="require('@/assets/image/img_section_7.png')"
+      > -->
+        <v-container style="min-height: 90vh">
+          <v-row class="my-16" align="center" justify="center">
+            <v-col cols="12" md="5" class="mt-16">
+              <p class="text-h4 text--first mt-16 mb-5">Kontak Kami</p>
+              <div class="my-16">
+                <div class="title text--secondary line-text-second">
+                  Alfian An - Naufal Nuha
+                </div>
+                <div
+                  class="
+                    body-1
+                    font-weight-light
+                    subheader
+                    text--secondary
+                    line-text-second
+                  "
+                >
+                  Jl. Ahmad Wahid 172B Kalangan, Baturetno, Banguntapan, <br />
+                  Bantul, Yogyakarta, Indonesia
+                </div>
+                <div
+                  class="
+                    body-1
+                    font-weight-light
+                    subheader
+                    text--secondary
+                    line-text-second
+                  "
+                >
+                  Telephone: +62 895 3925 85163
+                </div>
+                <div
+                  class="
+                    body-1
+                    font-weight-light
+                    subheader
+                    text--secondary
+                    line-text-second
+                  "
+                >
+                  Email : alfian.nuha@gmail.com
+                </div>
+              </div>
+              <img
+                alt="sodapos"
+                :width="$vuetify.breakpoint.name !== 'xs' ? '370' : '90%'"
+                :src="require('@/assets/image/contactus.png')"
+              />
+            </v-col>
+            <v-col cols="12" md="7" class="mt-16">
+              <ValidationObserver ref="observer">
+                <v-form class="mt-16">
+                  <ValidationProvider
+                    name="Nama Lengkap"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Nama Lengkap"
+                      v-model="form.name"
+                      :error-messages="errors"
+                      required
+                    >
+                    </v-text-field>
+                  </ValidationProvider>
+                  <ValidationProvider
+                    name="No Telephone"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="No Telephone"
+                      type="number"
+                      v-model="form.phone"
+                      :error-messages="errors"
+                      required
+                    >
+                    </v-text-field>
+                  </ValidationProvider>
+                  <ValidationProvider
+                    name="Alamat Email"
+                    rules="required|email"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Alamat Email"
+                      v-model="form.address"
+                      :error-messages="errors"
+                      required
+                    >
+                    </v-text-field>
+                  </ValidationProvider>
+                  <ValidationProvider
+                    name="Isi Pesan"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-textarea
+                      rows="5"
+                      v-model="form.content"
+                      :error-messages="errors"
+                      required
+                    >
+                      <template v-slot:label>
+                        <div>Isi Pesan</div>
+                      </template>
+                    </v-textarea>
+                  </ValidationProvider>
+                </v-form>
+              </ValidationObserver>
+              <div>
+                <!-- <v-alert
+                  type="error"
+                  text
+                  dense
+                  prominent
+                  v-show="error.message.length > 0"
+                  v-html="error.message"
+                >
+                </v-alert> -->
+              </div>
+              <div class="text-right">
+                <v-btn
+                  elevation="0"
+                  class="body-2 text-capitalize white--text mt-5 primary-color"
+                  large
+                  :loading="process.run"
+                  :disabled="process.run"
+                  @click="sending"
+                >
+                  Kirim Pesan
+                </v-btn>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      <!-- </v-img> -->
+    </section>
+
+    <!-- <section id="contact">
+      <v-container
+        style=""
+        :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-16 my-16'"
+      >
+      <v-row align="center" justify="center">
+          <v-col cols="12" md="8" class="px-15 text-center">
+            <p
+              class="
+                mt-7
+                text-h5
+                font-weight-light
+                subheader
+                text--secondary
+                font-italic
+                line-text-second
+              "
+            >
+              Contact Me
+            </p>
+          </v-col>
+        </v-row>
+        <v-row class="pa-3 py-12" align="center" no-gutters>
+          <form>
+              <v-text-field
+                outlined
+                v-model="form.email"
+                type="email"
+                name="_replyto">
+              </v-text-field>
+              <v-textarea v-model="form.message" name="message"></v-textarea>
+            <v-btn class="white--text" style="background: #654ea3;background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);background: linear-gradient(to right, #eaafc8, #654ea3);" @click="sending">Send</v-btn>
+          </form>
+        </v-row>
+      </v-container>
+    </section> -->
   </div>
 </template>
 
 <script>
-import { createSEOMeta } from '@/utils/seo'
+import { createSEOMeta } from "@/utils/seo";
 export default {
   data() {
     return {
       dialog: {
         request: false,
         website: false,
+        description: false,
+      },
+      process: {
+        run: false
+      },
+      form: {
+        name: "",
+        phone: "",
+        address: "",
+        content: "",
       },
       show: false,
       detail: {},
@@ -524,104 +662,211 @@ export default {
         {
           title: "Email",
           link: `https://mail.google.com/mail/?view=cm&fs=1&to=alfian.nuha@gmail.com&su=[PROJECT] Request Project&body=Isi keterangan permintaan Anda dengan jelas dan sertakan nomor telpon atau nomor Whatsapp yang dapat kami hubungi&bcc=alfian.nuha@gmail.com`,
-          icon: require('@/assets/sosmed/gmail.png')
+          icon: require("@/assets/sosmed/gmail.png"),
         },
         {
           title: "Linkedin",
           link: `https://www.linkedin.com/in/alfian-an-naufal-nuha-9046a91b6`,
-          icon: require('@/assets/sosmed/login_linkedin.png')
+          icon: require("@/assets/sosmed/login_linkedin.png"),
         },
         {
           title: "Whatsapp",
           link: `https://wa.me/62895392685163`,
-          icon: require('@/assets/sosmed/ic_share_wa.svg')
+          icon: require("@/assets/sosmed/ic_share_wa.svg"),
         },
         {
           title: "Telegram",
           link: `https://t.me/aa_nuha`,
-          icon: require('@/assets/sosmed/ic_share_tel.svg')
+          icon: require("@/assets/sosmed/ic_share_tel.svg"),
         },
       ],
       projects: [
         {
           title: "Website Pernikahan",
-          image: require('@/assets/image/weddingku.png'),
-          website: "https://weddingku.vercel.app/"
+          image: require("@/assets/image/weddingku.png"),
+          website: "https://weddingku.vercel.app/",
+          description: `Website ini saya buat sebenarnya untuk kepentingan pribadi saya agar tidak memakan biaya untuk pembuatan jasa Undangan Pernikahan. Website ini saya buat dengan Framework Nuxt Js dan Vuetify. Webiste ini saya kerjaan dalam kurun waktu satu hari. Karna data di dalamnya masih data kosong atau dummy, maka dari itu lebih cepat pengerjaan nya.`,
+          view: false,
         },
         {
           title: "Landing Page SODA POS",
-          image: require('@/assets/image/sodapos.png'),
-          website: "https://sodapos.com"
+          image: require("@/assets/image/sodapos.png"),
+          website: "https://sodapos.com",
+          description: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.`,
+          detail_desc: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.
+          Landing Page ini Memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Registrasi</li>
+            <li>Menu Dashboard (Memiliki  fitur auto login ke halaman Admin / Kasir Toko)</li>
+            <li>Menu Data Merchan</li>
+            <li>Menu Tagihan</li>
+            <li>Menu Profile atau Pengaturan</li>
+          </ol>`, 
+          view: true,
         },
         {
           title: "Landing Page Affiliate SODA POS",
-          image: require('@/assets/image/affiliate.png'),
-          website: "https://affiliate.sodapos.com"
+          image: require("@/assets/image/affiliate.png"),
+          website: "https://affiliate.sodapos.com",
+          description: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify.
+          `,
+          detail_desc: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify. Landing Page ini Memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login By email atau Sigle Sign On (Google Sign In)</li>
+            <li>Registrasi By email atau Sigle Sign On (Google Sign In)</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Komisi</li>
+            <li>Menu Laporan</li>
+            <li>Menu Profile atau Pengaturan</li>
+          </ol>`,
+          view: true,
         },
         {
           title: "Halaman Admin User SODA POS",
-          image: require('@/assets/image/admin.png'),
-          website: "https://admin.sodapos.com"
+          image: require("@/assets/image/admin.png"),
+          website: "https://admin.sodapos.com",
+          description: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify.
+          `,
+          detail_desc: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify. 
+          <div @click="detailDesc(l)">Selengkapnya ....</div>
+          Halaman Admin ini memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Reset Password</li>
+            <li>Menu Berita SODA POS</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Produk (Pengaturan Produk, Bahan, Tipe Penjualan, Kategori Produk, dan ada juga untuk pengaturan Resep)</li>
+            <li>Menu Inventory / Stok (Melihat Stok Produk, Melihat Kartu Stok, Melakukan Penyesuaian Stok, Transfer Stok kepada Toko Cabang, Melakukan Stok Opname)</li>
+            <li>Menu Monitoring Order (Memonitoring Pesanan)</li>
+            <li>Menu Supplier</li>
+            <li>Menu Pembelian (Pembelian Produk kepada Supplier)</li>
+            <li>Menu Pelanggan</li>
+            <li>Menu Pegawai (Dapat mengatur privilage menu untuk karyawan dan hanya untuk Admin)</li>
+            <li>Menu Laporan Penjualan (Terdapat lebih dari 5 Laporan Penjualan)</li>
+            <li>Menu Shift Kasir (Mengetahui Hasil Penjualan tiap Shift)</li>
+            <li>Menu Pengaturan (Mengatur Toko dan Mengatur Bank untuk pembayaran Non-Tunai)</li>
+          </ol>`,
+          view: true,
         },
         {
           title: "Halaman Admin Internal SODA POS",
-          image: require('@/assets/image/internal.png'),
-          website: "https://internal.sodapos.com"
+          image: require("@/assets/image/internal.png"),
+          website: "https://internal.sodapos.com",
+          description: `Halaman Admin Internal SODA POS adalah Halaman untuk kepnetingan internal atau untuk CS SODA POS. Halaman ini menggunakan CodeIgniter 3, JQuery dan Bootstrap`,
+          detail_desc: ``,
+          view: false,
         },
         {
           title: "Halaman Admin Vitoads",
-          image: require('@/assets/image/vitoads.png'),
-          website: "https://vito-cms.vercel.app"
+          image: require("@/assets/image/vitoads.png"),
+          website: "https://vito-cms.vercel.app",
+          description: `Halaman Admin Vitoads adalah halaman admin yang di gunakan untuk mengatur penjualan Produk, melakukan Approval Topup, melakukan Approval pembelian Iklan, melakukan approval Withdraw dan pengatuan untuk Aplikasi Mobile nya.`,
+          detail_desc: `Halaman Admin Vitoads adalah halaman admin yang di gunakan untuk mengatur penjualan Produk, melakukan Approval Topup, melakukan Approval pembelian Iklan, melakukan approval Withdraw dan pengatuan untuk Aplikasi Mobile nya.
+          Halaman Admin ini memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Iklan</li>
+            <li>Menu Approval Iklan (Video dan Baris)</li>
+            <li>Menu Approval TopUp</li>
+            <li>Menu Approval Withdraw</li>
+            <li>Menu Data User</li>
+            <li>Menu Pengaturan Aplikasi Mobile</li>
+          </ol>`,
+          view: true,
         },
         {
           title: "Halaman Admin CMS KIMI",
-          image: require('@/assets/image/kimi.png'),
-          website: "http://cms.kimi.id"
+          image: require("@/assets/image/kimi.png"),
+          website: "http://cms.kimi.id",
+          description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
+          detail_desc: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
+          Halaman Admin ini memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Course (CRUD Course)</li>
+            <li>Menu Topic (CRUD Topic Course)</li>
+            <li>Menu Activity (CRUD Activity)</li>
+            <li>Menu Question (CRUD Question : Kosakata (Pilihan Gambar), Kosakata (Matching Gambar), Mendengarkan AudioMenyusun Kata/ Menerjemahkan, Merekam Suara, Merekam Suara (Conversation), Membaca (Fill in the blank), Membaca (Paragraph))</li>
+            <li>Menu Data User</li>
+            <li>Menu Pengaturan</li>
+          </ol>`,
+          view: true,
         },
         {
           title: "Halaman Admin Garonk Signal",
-          image: require('@/assets/image/garonk_signal.png'),
-          website: "https://garonk.com"
+          image: require("@/assets/image/garonk_signal.png"),
+          website: "https://garonk.com",
+          description: `Halaman Admin Garonk Signal ini digunakan untuk membuat sebuah layanan signal, list update waktu signal, dll. Halaman Admin ini dibuat menggunakan CodeIgniter 3, JQuery dan Bootstrap.`,
+          detail_desc: `
+          Halaman Admin Garonk Signal ini digunakan untuk membuat sebuah layanan signal, list update waktu signal, dll. Halaman Admin ini dibuat menggunakan CodeIgniter 3, JQuery dan Bootstrap.
+          Halaman Admin ini memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Data User</li>
+            <li>Menu Layanan Signal</li>
+            <li>Menu List Waktu Update Signal</li>
+            <li>Menu Broadcast (digunakan untuk mengirimkan pesan pengumuman kepada pengguna)</li>
+            <li>Menu Signal Order (berisi pesanan pembelian signal)</li>
+            <li>Menu Social Media (untuk mengatur Social media yang tampil pada Aplikasi Mobile)</li>
+            <li>Menu Pengaturan (Pengaturan Terhadap Aplikasi Mobile : Logo, Nama Apliaksi, Close Order)</li>
+          </ol>`,
+          view: true,
         },
       ],
       skills: [
         {
           title: "PHP",
-          image: require('@/assets/logo/php.png')
+          image: require("@/assets/logo/php.png"),
         },
         {
           title: "Vue js",
-          image: require('@/assets/logo/vue.png')
+          image: require("@/assets/logo/vue.png"),
         },
         {
           title: "Nuxt js",
-          image: require('@/assets/logo/nuxt.png')
+          image: require("@/assets/logo/nuxt.png"),
         },
         {
           title: "JS",
-          image: require('@/assets/logo/js.png')
+          image: require("@/assets/logo/js.png"),
         },
         {
           title: "CodeIgniter",
-          image: require('@/assets/logo/codeigniter.png')
+          image: require("@/assets/logo/codeigniter.png"),
         },
         {
           title: "HTML",
-          image: require('@/assets/logo/html.png')
+          image: require("@/assets/logo/html.png"),
         },
         {
           title: "CSS",
-          image: require('@/assets/logo/css.png')
+          image: require("@/assets/logo/css.png"),
         },
       ],
       // SEO
       content: {
-        url: '',
-        title: 'Beranda',
-        description: 'Portofolio Nuha',
-        image: require('@/assets/logo/logo.png'),
-      }
-    }
+        url: "",
+        title: "Alfian An - Naufal Nuha - Beranda",
+        description: "Portofolio Alfian An - Naufal Nuha",
+        image: require("@/assets/logo/logo_2.png"),
+      },
+    };
   },
   head() {
     return {
@@ -643,7 +888,7 @@ export default {
           elmnt.scrollIntoView();
         });
       }
-    }
+    },
   },
   computed: {},
   mounted() {
@@ -661,18 +906,30 @@ export default {
     }
   },
   methods: {
-    goTo(link){
+    goTo(link) {
       window.open(
         link,
-        '_blank' // <- This is what makes it open in a new window.
+        "_blank" // <- This is what makes it open in a new window.
       );
     },
-    preview(data){
-      this.dialog.website = true
-      this.detail = data
+    sending() {
+      console.log(this.form);
+      this.$axios.post(`https://formspree.io/f/xwkajkdl`,this.form)
+      .then((response) => {
+        console.log(response);
+      })
+    },
+    detailDesc(data){
+      console.log(data);
+      this.detail = data;
+      this.dialog.description = true
+    },
+    preview(data) {
+      this.dialog.website = true;
+      this.detail = data;
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -680,24 +937,31 @@ export default {
   align-items: center;
   bottom: 0;
   justify-content: center;
-  opacity: .5;
+  opacity: 0.5;
   position: absolute;
-  width: 100%;
+  width: 50%;
+}
+.project {
+  border-radius: 15px;
+  background: #654ea3;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
+  box-shadow: inset -20px -20px 60px #eaafc8, inset 20px 20px 60px #745abb;
 }
 .header-title {
-  font-family: 'Kaushan Script', cursive !important;
-  font-size: 40px;
-  color: #ff4757
+  font-family: "Kaushan Script", cursive !important;
+  font-size: 23px;
+  color: #ff4757;
 }
 .subheader-title {
-  font-family: 'Inter;sans-serif', cursive !important;
-  font-size: 30px;
-  color: #ff4757
+  font-family: "Inter;sans-serif", cursive !important;
+  font-size: 17px;
+  color: #ff4757;
 }
 
 /* CUSTOME */
 /* IMG WRAP ON */
-@media only screen and (min-width: 992px) and (max-height: 800px){}
+/* @media only screen and (min-width: 992px) and (max-height: 800px){}
 .hero-img-wrap {
   margin-bottom: 48px;
   min-width: 280px;
@@ -706,7 +970,7 @@ export default {
   height: 280px;
   max-width: 280px;
   max-height: 280px;
-}
+} */
 
 .hero-img-wrap {
   will-change: opacity;
@@ -721,9 +985,8 @@ export default {
   height: 25vw;
   max-height: 40vh;
   max-width: 40vh;
-  min-height: 350px;
-  min-width: 350px;
-  margin-bottom: 64px;
+  min-height: 250px;
+  min-width: 250px;
 }
 
 .hero-img-wrap {
@@ -735,12 +998,12 @@ export default {
 .hero-img-container {
   position: relative;
   z-index: 3;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   padding: 12px;
-  border: 1px solid hsla(0,0%,100%,.3);
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
   border-radius: 50%;
-  background-color: hsla(0,0%,84%,.5);
+  background-color: hsla(0, 0%, 84%, 0.5);
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -760,7 +1023,7 @@ export default {
   height: 100%;
   max-width: none;
   border-radius: 50%;
-  z-index: 7
+  z-index: 7;
 }
 
 /* HERO 1 */
@@ -797,41 +1060,56 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-image: radial-gradient(circle farthest-side at 100% 100%,#9873ff,rgba(152,115,255,0)),radial-gradient(circle farthest-side at 100% 0,#0ba5f7,rgba(85,196,255,0)),radial-gradient(circle farthest-side at 0 0,#ff763c,rgba(255,176,60,0)),radial-gradient(circle farthest-side at 0 100%,#ff5aaa,rgba(255,90,170,0));
+  background-image: radial-gradient(
+      circle farthest-side at 100% 100%,
+      #9873ff,
+      rgba(152, 115, 255, 0)
+    ),
+    radial-gradient(
+      circle farthest-side at 100% 0,
+      #0ba5f7,
+      rgba(85, 196, 255, 0)
+    ),
+    radial-gradient(circle farthest-side at 0 0, #ff763c, rgba(255, 176, 60, 0)),
+    radial-gradient(
+      circle farthest-side at 0 100%,
+      #ff5aaa,
+      rgba(255, 90, 170, 0)
+    );
 }
 
 /* HERO 2 */
 
 #hero-img-shadow-2 {
-    will-change: opacity, transform;
-    animation: heroImgShadow2 1.2s cubic-bezier(0.65, 0, 0.35, 1);
-    animation-duration: 1.2s;
-    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
-    animation-delay: 1.5s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: both;
-    animation-play-state: running;
-    animation-name: heroImgShadow2;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    animation-delay: 1.5s;
+  will-change: opacity, transform;
+  animation: heroImgShadow2 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  animation-delay: 1.5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-play-state: running;
+  animation-name: heroImgShadow2;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation-delay: 1.5s;
 }
 .hero-img-shadow-wrap.hero-img-shadow-wrap--intro {
-    z-index: 1;
+  z-index: 1;
 }
 
 .hero-img-shadow-wrap {
-    position: absolute;
-    left: -20%;
-    top: -20%;
-    right: 0;
-    bottom: 0;
-    width: 140%;
-    height: 140%;
-    padding: 20%;
-    border-radius: 50%;
-    -webkit-filter: blur(20px);
-    filter: blur(20px);
+  position: absolute;
+  left: -20%;
+  top: -20%;
+  right: 0;
+  bottom: 0;
+  width: 140%;
+  height: 140%;
+  padding: 20%;
+  border-radius: 50%;
+  -webkit-filter: blur(20px);
+  filter: blur(20px);
 }
 </style>

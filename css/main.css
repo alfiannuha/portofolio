@@ -23,6 +23,12 @@ body {
   padding-bottom: 40px !important;
 } */
 
+.primary-color {
+  background: #654ea3;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
+}
+
 /* SCROLL */
 ::-webkit-scrollbar {
   width: 5px;

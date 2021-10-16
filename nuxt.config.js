@@ -10,25 +10,27 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s',
-    title: 'portofolio',
+    title: 'Alfian An - Naufal Nuha',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'A Web Development based in Yogyakarta and specializes in making Web-based applications' },
       { name: 'format-detection', content: 'telephone=no' },
+      { name: "google-site-verification", content: "XA19svWIWZolsAs3dJF4_tuxK2ron_arNAtqgWdb9R4" },
+      { name: "description", content: 'A Web Development based in Yogyakarta and specializes in making Web-based applications'},
     ],
     link: [
-      { rel: 'shortcut icon', type: 'image/x-icon', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '16x16', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '32x32', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '64x64', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '120x120', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '144x144', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '152x152', href: '/logo.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '192x192', href: '/logo.png' },
-      { rel: 'apple-touch-icon', href: '/logo.png' },
-      { rel: 'mask-icon', href: '/logo.png' },
-      { rel: 'ms-tile-image', href: '/logo.png' }
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '16x16', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '32x32', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '64x64', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '120x120', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '144x144', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '152x152', href: '/logo_2.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '192x192', href: '/logo_2.png' },
+      { rel: 'apple-touch-icon', href: '/logo_2.png' },
+      { rel: 'mask-icon', href: '/logo_2.png' },
+      { rel: 'ms-tile-image', href: '/logo_2.png' }
     ]
   },
 
@@ -44,6 +46,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~plugins/VeeValidate.js',
+    '~/plugins/Axios.js',
+    { src: '~plugins/VueCarousel3d.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -66,11 +71,13 @@ export default {
   ],
 
   sitemap: {
-    hostname: 'https://portofolio.vercel.app',
+    hostname: 'https://portofolionuha.com/',
     path: 'sitemap.xml',
     gzip: true,
     generate: false,
-    exclude: [],
+    exclude: [
+      '/about/**'
+    ],
     defaults: {
       changefreq: 'daily',
       priority: 1,

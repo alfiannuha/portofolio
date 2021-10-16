@@ -19,8 +19,8 @@
             </v-col>
           </v-row>
           <div 
-            class="mt-5 pa-2 white--text rounded-lg" 
-            style="font-size: 16px;background: rgb(246,128,140);background: linear-gradient(90deg, rgba(246,128,140,1) 0%, rgba(233,113,212,1) 100%);">
+            class="mt-5 pa-2 white--text rounded-lg primary-color" 
+            style="font-size: 16px;">
             Write clearly your request, in addition to whatsapp and telegram, include your number where we can be contacted
           </div>
         </v-card-text>
@@ -32,7 +32,7 @@
       app
       elevation="0"
       fixed
-      :class="$route.name !== 'fiture' && $route.name !== 'faq' && $route.name !== 'privacy' && $route.name !== 'about' &&  $route.name !== 'help' ? 'header' : ''">
+      :class="$route.name !== 'about' ? 'header' : 'header-about'">
       <v-container>
 
         <v-row class="hidden-md-and-down">
@@ -54,7 +54,7 @@
               :class="index === 0 ? 'ml-7' : ''"
             >
               <v-card-title
-                class="body-1 menu cursor-pointer text-first hover-link">
+                class="body-1 menu cursor-pointer black--text hover-link">
                 {{ item.label }}
               </v-card-title>
             </nuxt-link>
@@ -62,37 +62,13 @@
           <v-col cols="12" md="4">
             <v-toolbar-title class="d-flex">
               <v-spacer></v-spacer>
-              <div class="header-title-right text-left py-3 cursor-pointer" @click="dialog.request = true">
+              <div class="header-title-right text-left py-3 hover-link cursor-pointer" @click="dialog.request = true">
                 Project Request 
                 <v-icon color="#000000">mdi-chevron-double-right</v-icon>
               </div>
             </v-toolbar-title>
           </v-col>
         </v-row>
-        
-
-        <!-- <v-row justify="center" align="center" class="hidden-md-and-down">
-          <v-col cols="12" class="d-flex align-center justify-center">
-            <nuxt-link to="/" style="text-decoration: none">
-            <div class="header-title text-left">
-              Alfian Nuha
-            </div>
-            </nuxt-link>
-            <nuxt-link
-              style="text-decoration: none"
-              v-for="(item, index) in menu"
-              :key="index"
-              :to="item.link"
-              :class="index === 0 ? 'ml-7' : ''"
-            >
-              <v-card-title
-                class="body-2 menu cursor-pointer text-first hover-link"
-              >
-                {{ item.label }}
-              </v-card-title>
-            </nuxt-link>
-          </v-col>
-        </v-row> -->
         <v-row justify="left" align="left" class="hidden-lg-and-up">
           <v-col cols="10" style="padding: 0 0 1rem">
             <nuxt-link to="/">
@@ -141,6 +117,11 @@ export default {
       },
       menu: [
         {
+          label: "About",
+          icon: "mdi-clock",
+          link: "/about"
+        },
+        {
           label: "Project",
           icon: "mdi-clock",
           link: "/#project"
@@ -150,10 +131,10 @@ export default {
           icon: "mdi-clock",
           link: "/#skill"
         },
-        // {
-        //   label: "Contact",
-        //   link: "#lokasi"
-        // }
+        {
+          label: "Contact",
+          link: "/#contact"
+        }
       ],
       social_media: [
         {
@@ -217,13 +198,15 @@ export default {
 }
 .header {
   background-color: transparent !important;
-  /* background: rgb(249,90,106);
-  background: linear-gradient(90deg, rgba(249,90,106,1) 7%, rgba(246,72,215,1) 100%); */
+}
+.header-about {
+  background: #654ea3;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
 }
 html:not([data-scroll="0"]) .header {
-  /* background-color: transparent !important; */
-  /* background-color: #FFFFFF !important; */
-  background: rgb(249,90,106);
-  background: linear-gradient(90deg, rgba(249,90,106,1) 7%, rgba(246,72,215,1) 100%);
+  background: #654ea3;
+  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #eaafc8, #654ea3);
 }
 </style>

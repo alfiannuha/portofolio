@@ -22,8 +22,8 @@ export const createSEOMeta = (data) => [
     {
       hid: 'og:url',
       property: 'og:url',
-      // content: process.env.NODE_ENV === 'development' ? `https://portofolio-nuha.vercel.app/${data.url}` : `https://portofolio-nuha.vercel.app/${data.url}`
-      content: `https://portofolio-nuha.vercel.app/${data.url}`
+      // content: process.env.NODE_ENV === 'development' ? `https://portofolionuha.com/${data.url}` : `https://portofolionuha.com/${data.url}`
+      content: `https://portofolionuha.com/${data.url}`
     },
     // TWITTER
     { hid: 'twitter:title', property: 'twitter:title', content: data.title },
@@ -41,11 +41,10 @@ export const createSEOMeta = (data) => [
     {
       hid: 'twitter:url',
       property: 'twitter:url',
-      // content: process.env.NODE_ENV === 'development' ? `https://portofolio-nuha.vercel.app/${data.url}` : `https://portofolio-nuha.vercel.app/${data.url}`
-      content: `https://portofolio-nuha.vercel.app/${data.url}`
+      // content: process.env.NODE_ENV === 'development' ? `https://portofolionuha.com/${data.url}` : `https://portofolionuha.com/${data.url}`
+      content: `https://portofolionuha.com/${data.url}`
     },
     {
       name: 'facebook-domain-verification', content: '8v8gwbkf1ebteboonludcr2ys8puu0'
     },
-    { name: "google-site-verification", content: "i7PN9Mez81C9wkiqItlLxr1X9HceiEaw10Ok7dlNYlc" }
   ]
