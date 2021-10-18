@@ -88,7 +88,8 @@ export default {
     gzip: true,
     generate: false,
     exclude: [
-      '/about/**'
+      '/about/**',
+      '/article/**'
     ],
     defaults: {
       changefreq: 'daily',

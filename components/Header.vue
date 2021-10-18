@@ -34,12 +34,11 @@
       fixed
       :class="$route.name !== 'about' ? 'header' : 'header-about'">
       <v-container>
-
         <v-row class="hidden-md-and-down">
           <v-col cols="12" md="4">
             <v-toolbar-title class="d-flex">
               <nuxt-link to="/" style="text-decoration: none">
-                <div class="header-title text-left">
+                <div class="header-title text-left  hover-link">
                   Alfian Nuha
                 </div>
                 </nuxt-link>
@@ -95,7 +94,7 @@
                   v-for="(item, index) in menu"
                   :key="index"
                   :to="item.link">
-                  <v-list-item-title class="color-first">
+                  <v-list-item-title class="color-second">
                     {{ item.label }}
                   </v-list-item-title>
                 </v-list-item>
@@ -105,6 +104,7 @@
         </v-row>
       </v-container>
     </v-app-bar>
+    <v-divider style="width:10px !important" v-if=" $route.name === 'article'"></v-divider>
   </div>
 </template>
 
