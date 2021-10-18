@@ -57,8 +57,20 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
-    ['@nuxtjs/vuetify', {treeShake: true}]
+    ['@nuxtjs/vuetify', {treeShake: true}],
+    // Google Analytics
+    '@nuxtjs/google-analytics'
   ],
+
+  googleAnalytics: {
+    // Options
+    id: 'G-ZBZ6KQVS2P'
+  },
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: 'G-ZBZ6KQVS2P'
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
