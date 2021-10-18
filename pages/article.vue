@@ -9,7 +9,7 @@
         style = "text-align: justify; text-indent: 0.5in;"
         :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-12 my-12'"
       >
-      <h1 :class="$vuetify.breakpoint.name === 'xl' ? 'mb-7 umby' : 'mb-7 mt-14 umby-mobile'">Mahasiswa UMBY jadi Technopreneur memanfaatkan Web</h1>
+      <h1 :class="$vuetify.breakpoint.name === 'lg' ? 'mb-7 umby' : 'mb-7 mt-14 umby-mobile'">Mahasiswa UMBY jadi Technopreneur memanfaatkan Web</h1>
 
       <div style="font-size: 18px !important;">
         <p>
