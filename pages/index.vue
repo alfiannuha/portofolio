@@ -166,8 +166,8 @@
                 </div>
               </div>
 
-              <div class="header-title mt-5">Alfian An - Naufal Nuha</div>
-              <div class="subheader-title mt-7">WEB Development</div>
+              <h1 class="header-title mt-5">Alfian An - Naufal Nuha</h1>
+              <h2 class="subheader-title mt-7">WEB Development</h2>
               <div class="mt-7">
                 <v-btn
                   style="
@@ -950,12 +950,14 @@ export default {
 }
 .header-title {
   font-family: "Kaushan Script", cursive !important;
-  font-size: 23px;
+  font-weight: 500;
+  /* font-size: 23px; */
   color: #ff4757;
 }
 .subheader-title {
   font-family: "Inter;sans-serif", cursive !important;
-  font-size: 17px;
+  font-weight: 500;
+  /* font-size: 17px; */
   color: #ff4757;
 }
 
