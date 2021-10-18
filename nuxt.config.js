@@ -14,10 +14,10 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'A Web Development based in Yogyakarta and specializes in making Web-based applications' },
+      { hid: 'description', name: 'description', content: 'Hai, saya Nuha, seorang web development yang bekerja di Yogyakarata. Saya tinggal di Yogyakarta dan memiliki specialisasi membuat Aplikasi WEB / Halaman Admin sebuah company.' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: "google-site-verification", content: "XA19svWIWZolsAs3dJF4_tuxK2ron_arNAtqgWdb9R4" },
-      { name: "description", content: 'A Web Development based in Yogyakarta and specializes in making Web-based applications'},
+      { name: "description", content: 'Hai, saya Nuha, seorang web development yang bekerja di Yogyakarata. Saya tinggal di Yogyakarta dan memiliki specialisasi membuat Aplikasi WEB / Halaman Admin sebuah company.'},
     ],
     link: [
       { rel: 'shortcut icon', type: 'image/x-icon', href: '/logo_2.png' },

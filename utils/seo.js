@@ -42,7 +42,7 @@ export const createSEOMeta = (data) => [
       hid: 'twitter:url',
       property: 'twitter:url',
       // content: process.env.NODE_ENV === 'development' ? `https://portofolionuha.com/${data.url}` : `https://portofolionuha.com/${data.url}`
-      content: `https://portofolionuha.com/${data.url}`
+      content: `https://twitter.com/Aanuha1`
     },
     {
       name: 'facebook-domain-verification', content: '8v8gwbkf1ebteboonludcr2ys8puu0'
