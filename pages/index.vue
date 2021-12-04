@@ -166,9 +166,10 @@
                 </div>
               </div>
 
-              <h1 class="header-title mt-5">Alfian An - Naufal Nuha</h1>
-              <h2 class="subheader-title mt-7">WEB Development</h2>
-              <div class="mt-7">
+              
+              <h1 class="header-title mt-5 animate__animated animate__backInDown">Alfian An - Naufal Nuha</h1>
+              <h2 class="subheader-title mt-7 animate__animated animate__backInDown animate__delay-1s">WEB Development</h2>
+              <div class="mt-7 animate__animated animate__backInDown animate__delay-2s">
                 <v-btn
                   style="
                     color: white;

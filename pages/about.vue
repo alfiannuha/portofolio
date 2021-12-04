@@ -13,7 +13,7 @@
         :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-12 my-12'"
       >
         <v-row no-gutters>
-          <v-col cols="12" md="5" :class="$vuetify.breakpoint.name === 'lg' ? 'mt-3' : 'mt-10'">
+          <v-col cols="12" md="5" :class="$vuetify.breakpoint.name === 'lg' ? 'mt-3 animate__animated animate__fadeInLeft animate__delay-1s' : 'mt-10 animate__animated animate__fadeInDown'">
             <v-img
               width="90%"
               height="100%"
@@ -28,7 +28,7 @@
               </template>
             </v-img>
           </v-col>
-          <v-col cols="12" md="7" class="px-5 mt-3 text-justify">
+          <v-col cols="12" md="7" class="px-5 mt-3 text-justify animate__animated animate__fadeInLeft ">
             <h3 class="mb-3">Hallo, Saya Alfian An - Naufal Nuha</h3>
             <p>
               Hallo, nama saya Alfian An - Naufal Nuha dan saya seorang Web
