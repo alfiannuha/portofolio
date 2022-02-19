@@ -138,24 +138,24 @@ export default {
       ],
       social_media: [
         {
-          title: "Facebook",
+          title: "Email",
           link: `https://mail.google.com/mail/?view=cm&fs=1&to=alfian.nuha@gmail.com&su=[PROJECT] Request Project&body=Isi keterangan permintaan Anda dengan jelas dan sertakan nomor telpon atau nomor Whatsapp yang dapat kami hubungi&bcc=alfian.nuha@gmail.com`,
-          icon: require('@/assets/sosmed/gmail.png')
+          icon: require("@/assets/sosmed/gmail.png"),
         },
         {
           title: "Linkedin",
           link: `https://www.linkedin.com/in/alfian-an-naufal-nuha-9046a91b6`,
-          icon: require('@/assets/sosmed/login_linkedin.png')
+          icon: require("@/assets/sosmed/login_linkedin.png"),
         },
         {
           title: "Whatsapp",
           link: `https://wa.me/62895392685163`,
-          icon: require('@/assets/sosmed/ic_share_wa.svg')
+          icon: require("@/assets/sosmed/ic_share_wa.svg"),
         },
         {
           title: "Telegram",
           link: `https://t.me/aa_nuha`,
-          icon: require('@/assets/sosmed/ic_share_tel.svg')
+          icon: require("@/assets/sosmed/ic_share_tel.svg"),
         },
       ],
     };
@@ -182,7 +182,14 @@ export default {
     });
     storeScroll();
   },
-  methods: {}
+  methods: {
+    goTo(link) {
+      window.open(
+        link,
+        "_blank" // <- This is what makes it open in a new window.
+      );
+    },
+  }
 };
 </script>
 
