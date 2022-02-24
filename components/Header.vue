@@ -200,7 +200,7 @@ export default {
   color: #000000
 }
 .header-title-right {
-  font-size: 20px;
+  font-size: 18px;
   color: #000000
 }
 .header {
@@ -209,11 +209,11 @@ export default {
 .header-about {
   background: #654ea3;
   background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
-  background: linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #CCE5F1, #FEC386);
 }
 html:not([data-scroll="0"]) .header {
   background: #654ea3;
   background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
-  background: linear-gradient(to right, #eaafc8, #654ea3);
+  background: linear-gradient(to right, #CCE5F1, #FEC386);
 }
 </style>

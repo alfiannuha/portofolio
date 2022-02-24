@@ -122,73 +122,78 @@
       </v-card>
     </v-dialog>
 
-    <v-img
+    <v-snackbar :color="snackbar.color" v-model="snackbar.state">
+      {{ snackbar.text }}
+    </v-snackbar>
+
+    <!-- <v-img
       alt="sodapos"
       width="100%"
       height="100vh"
-      :src="require('@/assets/image/pink.jpg')"
+      contain
+      :src="require('@/assets/image/hand-painted-watercolor-background-with-sky-clouds-shape.jpg')"
     >
-      <section :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
-        <v-container class="py-5 my-5">
-          <v-row class="pa-3 py-5 my-5" no-gutters>
-            <v-col cols="12" md="12" align="center" justify="center">
-              <div class="hero-img-wrap mt-10">
-                <div class="hero-img-container">
-                  <v-img
-                    width="100%"
-                    height="100%"
-                    class="hero-img"
-                    :src="require('@/assets/image/profile_.png')"
-                  >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
+    </v-img> -->
+    <section :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
+      <v-container class="py-5 my-5">
+        <v-row class="pa-3 py-5 my-5" no-gutters>
+          <v-col cols="12" md="12" align="center" justify="center">
+            <div class="hero-img-wrap mt-10">
+              <div class="hero-img-container">
+                <v-img
+                  width="100%"
+                  height="100%"
+                  class="hero-img"
+                  :src="require('@/assets/image/profile_.png')"
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="grey lighten-5"
                       >
-                        <v-progress-circular
-                          indeterminate
-                          color="grey lighten-5"
-                        >
-                        </v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
-                  <div id="hero-img-shadow-1" class="hero-img-shadow-wrap">
-                    <div class="hero-img-shadow"></div>
-                  </div>
-                  <div
-                    id="hero-img-shadow-2"
-                    class="hero-img-shadow-wrap hero-img-shadow-wrap--intro"
-                  >
-                    <div class="hero-img-shadow"></div>
-                  </div>
+                      </v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+                <div id="hero-img-shadow-1" class="hero-img-shadow-wrap">
+                  <div class="hero-img-shadow"></div>
+                </div>
+                <div
+                  id="hero-img-shadow-2"
+                  class="hero-img-shadow-wrap hero-img-shadow-wrap--intro"
+                >
+                  <div class="hero-img-shadow"></div>
                 </div>
               </div>
+            </div>
 
-              
-              <h1 class="header-title mt-5 animate__animated animate__backInDown">Alfian An - Naufal Nuha</h1>
-              <h2 class="subheader-title mt-7 animate__animated animate__backInDown animate__delay-1s">WEB Development</h2>
-              <div class="mt-7 animate__animated animate__backInDown animate__delay-2s">
-                <v-btn
-                  style="
-                    color: white;
-                    border-radius: 15px;
-                    background: #b57cee;
-                    box-shadow: inset -20px -20px 60px #9a69ca,
-                      inset 20px 20px 60px #d08fff;
-                  "
-                  @click="dialog.request = true"
-                >
-                  <span style="font-size: 15px"> Start a Project Request </span>
-                  <v-icon right>mdi-chevron-triple-right</v-icon>
-                </v-btn>
-              </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </section>
-    </v-img>
+            
+            <h1 class="header-title mt-5 animate__animated animate__backInDown">Alfian An - Naufal Nuha</h1>
+            <h2 class="subheader-title mt-7 animate__animated animate__backInDown animate__delay-1s">WEB Development</h2>
+            <div class="mt-7 animate__animated animate__backInDown animate__delay-2s">
+              <v-btn
+                style="
+                  color: #333;
+                  border-radius: 15px;
+                  background: linear-gradient(to left, #CDE5F1, #FEC386);
+                  box-shadow: inset -20px -20px 60px #9a69ca,
+                    inset 20px 20px 60px #d08fff;
+                "
+                @click="dialog.request = true"
+              >
+                <span style="font-size: 15px"> Start a Project Request </span>
+                <v-icon right>mdi-chevron-triple-right</v-icon>
+              </v-btn>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
 
     <section
       id="project"
@@ -490,6 +495,10 @@
                   "
                 >
                   Telephone: +62 895 3925 85163
+                  <input type="hidden" id="telephone" ref="link-referal" :value="`0895392685163`">
+                  <v-btn @click="copyText()" color="#A6DAF5" text x-small>
+                    <v-icon size="15">mdi-content-copy</v-icon>
+                  </v-btn>
                 </div>
                 <div
                   class="
@@ -518,6 +527,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
+                      color="#E69F8C"
                       label="Nama Lengkap"
                       v-model="form.name"
                       :error-messages="errors"
@@ -531,6 +541,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
+                      color="#E69F8C"
                       label="No Telephone"
                       type="number"
                       v-model="form.phone"
@@ -545,6 +556,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
+                      color="#E69F8C"
                       label="Alamat Email"
                       v-model="form.address"
                       :error-messages="errors"
@@ -558,6 +570,7 @@
                     v-slot="{ errors }"
                   >
                     <v-textarea
+                      color="#E69F8C"
                       rows="5"
                       v-model="form.content"
                       :error-messages="errors"
@@ -647,6 +660,11 @@ export default {
         request: false,
         website: false,
         description: false,
+      },
+      snackbar: {
+        state: false,
+        color: "",
+        text: "",
       },
       process: {
         run: false
@@ -907,6 +925,22 @@ export default {
     }
   },
   methods: {
+    copyText(){
+      /* Get the text field */
+      var copyText = document.getElementById("telephone");
+
+      /* Select the text field */
+      copyText.select();
+      // copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+      
+      /* Alert the copied text */
+      this.snackbar.state = true;
+      this.snackbar.color = "#FEC386"
+      this.snackbar.text = "Content Berhasil di Copy"
+    },
     goTo(link) {
       window.open(
         link,
@@ -945,21 +979,21 @@ export default {
 .project {
   border-radius: 15px;
   background: #654ea3;
-  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
-  background: linear-gradient(to right, #eaafc8, #654ea3);
-  box-shadow: inset -20px -20px 60px #eaafc8, inset 20px 20px 60px #745abb;
+  background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
+  background: linear-gradient(to right, #CCE5F1, #FEC386);
+  box-shadow: inset -20px -20px 60px #C6D0CC, inset 20px 20px 60px #98D4F5;
 }
 .header-title {
   font-family: "Kaushan Script", cursive !important;
   font-weight: 500;
   /* font-size: 23px; */
-  color: #ff4757;
+  color: #E69F8C;
 }
 .subheader-title {
   font-family: "Inter;sans-serif", cursive !important;
   font-weight: 500;
   /* font-size: 17px; */
-  color: #ff4757;
+  color: #E69F8C;
 }
 
 /* CUSTOME */
