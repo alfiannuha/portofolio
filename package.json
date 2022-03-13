@@ -18,6 +18,7 @@
     "core-js": "^3.15.1",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.15.7",
+    "vanilla-tilt": "^1.7.2",
     "vee-validate": "^3.3.9",
     "vue-carousel-3d": "^1.0.1",
     "vuetify": "^2.5.5"

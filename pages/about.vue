@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mb-12"
+    class="mb-7"
     style="
       background: #FEC386;
       background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
@@ -10,7 +10,7 @@
     <section :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
       <v-container
         style=""
-        :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-12 my-12'"
+        :class="$vuetify.breakpoint.mdAndDown ? 'pt-6' : 'pt-9 mt-8'"
       >
         <v-row no-gutters>
           <v-col cols="12" md="5" :class="$vuetify.breakpoint.name === 'lg' ? 'mt-3 animate__animated animate__fadeInLeft animate__delay-1s' : 'mt-10 animate__animated animate__fadeInDown'">
@@ -54,8 +54,15 @@
               beberapa project yang pernah saya buat bisa dilihat
               <nuxt-link class="white--text text-decoration-underline" to="/#project">disini</nuxt-link>
             </p>
+            <v-btn 
+              href="assets/CV_ALFIAN_AN_NAUFAL_NUHA.pdf" 
+              download=""
+              color="primary">
+              Download CV
+              <v-icon right>mdi-download</v-icon>
+            </v-btn>
             <p class="body-1 font-weight-bold mt-3 mb-0">Kontak Kami Di Sini</p>
-            <div class="my-5">
+            <div class="my-3">
               <div class="body-2 line-text-second text-first">
                 Jl. Ahmad Wahid 172B Kalangan, Baturetno, Banguntapan, <br />
                 Bantul, Yogyakarta, Indonesia
@@ -249,11 +256,13 @@ export default {
       content: {
         url: "about",
         title: "Tentang",
-        description: "Portofolio Nuha",
+        description: "Alfian An - Naufal Nuha",
         image: require("@/assets/logo/logo_2.png"),
       },
     };
   },
+  methods: {
+  }
 };
 </script>
 

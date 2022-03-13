@@ -39,6 +39,70 @@
       </v-card>
     </v-dialog>
 
+
+    <v-dialog v-model="dialog.previewImages" width="80%">
+      <v-img
+        :src="imagePreview">
+      </v-img>
+    </v-dialog>
+
+    <v-dialog v-model="dialog.details" width="80%" scrollable persistent>
+      <v-card class="rounded-lg box-shadow">
+        <v-card-title class="body-1">
+          {{ detail.title }}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-on="on"
+                v-bind="attrs"
+                small
+                class="ml-3"
+                color="primary"
+                icon
+                target="_blank"
+                :href="detail.website"
+              >
+                <v-icon>mdi-link</v-icon>
+              </v-btn>
+            </template>
+            <span>Preview in new Window</span>
+          </v-tooltip>
+          <v-spacer></v-spacer>
+          <v-icon color="red" @click="dialog.details = false">mdi-close-circle</v-icon>
+        </v-card-title>
+        <v-divider></v-divider>
+        <v-card-text style="height: 450px" class="pa-2">
+          <div class="d-flex">
+            <div
+              class="mr-5"
+              style="flex: 1">
+              <v-img :src="detail.image" width="650" height="350" class="cursor-pointer" @click="showImage(detail.image)">
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    >
+                    </v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+            </div>
+            <div
+              style="width: 600px;overflow: auto;height: 430px;"
+              class="subtitle-2">
+              <p v-if="detail.detail_desc" v-html="detail.detail_desc"></p>
+              <p v-else v-html="detail.description"></p>
+            </div>
+          </div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="dialog.website" width="80%" scrollable persistent>
       <v-card class="rounded-lg box-shadow">
         <v-card-title class="body-1">
@@ -126,14 +190,6 @@
       {{ snackbar.text }}
     </v-snackbar>
 
-    <!-- <v-img
-      alt="sodapos"
-      width="100%"
-      height="100vh"
-      contain
-      :src="require('@/assets/image/hand-painted-watercolor-background-with-sky-clouds-shape.jpg')"
-    >
-    </v-img> -->
     <section :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''">
       <v-container class="py-5 my-5">
         <v-row class="pa-3 py-5 my-5" no-gutters>
@@ -174,7 +230,7 @@
 
             
             <h1 class="header-title mt-5 animate__animated animate__backInDown">Alfian An - Naufal Nuha</h1>
-            <h2 class="subheader-title mt-7 animate__animated animate__backInDown animate__delay-1s">WEB Development</h2>
+            <h2 class="subheader-title mt-7 animate__animated animate__backInDown animate__delay-1s">Front-End Development</h2>
             <div class="mt-7 animate__animated animate__backInDown animate__delay-2s">
               <v-btn
                 style="
@@ -195,6 +251,7 @@
       </v-container>
     </section>
 
+    <!-- PROJECT -->
     <section
       id="project"
       :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''"
@@ -209,7 +266,7 @@
               Projects
             </p>
             <p class="text-h3" style="color: #d31145">
-              Beberapa project yang telah saya buat
+              Beberapa project yang telah saya kerjakan
             </p>
           </v-col>
           <v-col cols="12" md="6" class="pr-0 pl-0 custom__margin">
@@ -224,16 +281,94 @@
           </v-col>
         </v-row>
 
-        <!-- PROJECT -->
+        <!-- <div class="container">
+          <div class="card" data-tilt data-tilt-glare data-tilt-max-glare="0.8">
+            <div class="content">
+              <h2>01</h2>
+              <h3>Card One</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, cum.</p>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="content">
+              <h2>02</h2>
+              <h3>Card Two</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, cum.</p>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="content">
+              <h2>03</h2>
+              <h3>Card Three</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, cum.</p>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+        </div> -->
+
         <v-row no-gutters class="mt-5">
           <v-col
             cols="12"
             md="6"
             class="pa-3"
-            v-for="(l, index) in projects"
-            :key="index"
-          >
-            <v-expansion-panels accordion>
+            v-for="(l,i) in projects.slice(0,4)"
+            :key="i">
+
+            <v-hover v-slot="{ hover }">
+              <v-card class="project box-shadow rounded-lg mt-7" width="530">
+                <v-expand-transition>
+                  <div
+                    v-if="hover"
+                    @click="preview(l)"
+                    class="
+                      d-flex
+                      cursor-pointer
+                      transition-fast-in-fast-out
+                      grey
+                      lighten-4
+                      v-card--reveal
+                      text-h2
+                      white--text
+                    "
+                    style="height: 100%; width: 100%; z-index: 2">
+                    <h2 
+                      style="
+                        position: absolute;
+                        top: 30px;
+                        right: 20px;
+                        font-size: 2.3em;
+                        color: rgba(0, 0, 0, 0.05);
+                        pointer-events: none;"
+                      class="grey--text">0{{ i + 1 }}</h2>
+
+                    <div class="black--text text-h5 font-weight-bold">
+                      {{ l.title }}
+                    </div>
+                  </div>
+                </v-expand-transition>
+                <v-img :src="l.image">
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="grey lighten-5"
+                      >
+                      </v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-card>
+            </v-hover>
+
+            <!-- <v-expansion-panels accordion>
               <v-expansion-panel class="project">
                 <v-expansion-panel-header hide-actions class="pa-0">
                   <v-hover v-slot="{ hover }">
@@ -294,12 +429,17 @@
                   </div>
                 </v-expansion-panel-content>
               </v-expansion-panel>
-            </v-expansion-panels>
+            </v-expansion-panels> -->
           </v-col>
         </v-row>
+
+        <v-btn @click="$router.push('/projects')" text color="red" class="mt-5 mr-7 text-capitalize">
+          Show More Project
+        </v-btn>
       </v-container>
     </section>
 
+    <!-- SKILL -->
     <section
       id="skill"
       :class="$vuetify.breakpoint.name === 'xl' ? 'container' : ''"
@@ -384,7 +524,7 @@
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">Vue js</div>
+            <div class="text-center mt-3">Vue JS</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
             <v-img :src="require('@/assets/logo/nuxt.png')">
@@ -395,7 +535,18 @@
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">Nuxt js</div>
+            <div class="text-center mt-3">Nuxt JS</div>
+          </v-col>
+          <v-col cols="12" md="2" class="pa-10">
+            <v-img :src="require('@/assets/logo/next.png')">
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
+                  </v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+            <div class="text-center mt-16 pt-6">Next JS</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
             <v-img :src="require('@/assets/logo/mysql.png')">
@@ -458,158 +609,152 @@
       </v-container>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
-      <!-- <v-img
-        alt="section contact"
-        width="100%"
-        height="auto"
-        :src="require('@/assets/image/img_section_7.png')"
-      > -->
-        <v-container style="min-height: 90vh">
-          <v-row class="my-16" align="center" justify="center">
-            <v-col cols="12" md="5" class="mt-16">
-              <p class="text-h4 text--first mt-16 mb-5">Kontak Kami</p>
-              <div class="my-16">
-                <div class="title text--secondary line-text-second">
-                  Alfian An - Naufal Nuha
-                </div>
-                <div
-                  class="
-                    body-1
-                    font-weight-light
-                    subheader
-                    text--secondary
-                    line-text-second
-                  "
-                >
-                  Jl. Ahmad Wahid 172B Kalangan, Baturetno, Banguntapan, <br />
-                  Bantul, Yogyakarta, Indonesia
-                </div>
-                <div
-                  class="
-                    body-1
-                    font-weight-light
-                    subheader
-                    text--secondary
-                    line-text-second
-                  "
-                >
-                  Telephone: +62 895 3925 85163
-                  <input type="hidden" id="telephone" ref="link-referal" :value="`0895392685163`">
-                  <v-btn @click="copyText()" color="#A6DAF5" text x-small>
-                    <v-icon size="15">mdi-content-copy</v-icon>
-                  </v-btn>
-                </div>
-                <div
-                  class="
-                    body-1
-                    font-weight-light
-                    subheader
-                    text--secondary
-                    line-text-second
-                  "
-                >
-                  Email : alfian.nuha@gmail.com
-                </div>
+      <v-container style="min-height: 90vh">
+        <v-row class="my-16" align="center" justify="center">
+          <v-col cols="12" md="5" class="mt-16">
+            <p class="text-h4 text--first mt-16 mb-5">Kontak Kami</p>
+            <div class="my-16">
+              <div class="title text--secondary line-text-second">
+                Alfian An - Naufal Nuha
               </div>
-              <img
-                alt="sodapos"
-                :width="$vuetify.breakpoint.name !== 'xs' ? '370' : '90%'"
-                :src="require('@/assets/image/contactus.png')"
-              />
-            </v-col>
-            <v-col cols="12" md="7" class="mt-16">
-              <ValidationObserver ref="observer">
-                <v-form class="mt-16">
-                  <ValidationProvider
-                    name="Nama Lengkap"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      color="#E69F8C"
-                      label="Nama Lengkap"
-                      v-model="form.name"
-                      :error-messages="errors"
-                      required
-                    >
-                    </v-text-field>
-                  </ValidationProvider>
-                  <ValidationProvider
-                    name="No Telephone"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      color="#E69F8C"
-                      label="No Telephone"
-                      type="number"
-                      v-model="form.phone"
-                      :error-messages="errors"
-                      required
-                    >
-                    </v-text-field>
-                  </ValidationProvider>
-                  <ValidationProvider
-                    name="Alamat Email"
-                    rules="required|email"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      color="#E69F8C"
-                      label="Alamat Email"
-                      v-model="form.address"
-                      :error-messages="errors"
-                      required
-                    >
-                    </v-text-field>
-                  </ValidationProvider>
-                  <ValidationProvider
-                    name="Isi Pesan"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-textarea
-                      color="#E69F8C"
-                      rows="5"
-                      v-model="form.content"
-                      :error-messages="errors"
-                      required
-                    >
-                      <template v-slot:label>
-                        <div>Isi Pesan</div>
-                      </template>
-                    </v-textarea>
-                  </ValidationProvider>
-                </v-form>
-              </ValidationObserver>
-              <div>
-                <!-- <v-alert
-                  type="error"
-                  text
-                  dense
-                  prominent
-                  v-show="error.message.length > 0"
-                  v-html="error.message"
-                >
-                </v-alert> -->
+              <div
+                class="
+                  body-1
+                  font-weight-light
+                  subheader
+                  text--secondary
+                  line-text-second
+                "
+              >
+                Jl. Ahmad Wahid 172B Kalangan, Baturetno, Banguntapan, <br />
+                Bantul, Yogyakarta, Indonesia
               </div>
-              <div class="text-right">
-                <v-btn
-                  elevation="0"
-                  class="body-2 text-capitalize white--text mt-5 primary-color"
-                  large
-                  :loading="process.run"
-                  :disabled="process.run"
-                  @click="sending"
-                >
-                  Kirim Pesan
+              <div
+                class="
+                  body-1
+                  font-weight-light
+                  subheader
+                  text--secondary
+                  line-text-second
+                "
+              >
+                Telephone: +62 895 3925 85163
+                <input type="hidden" id="telephone" ref="link-referal" :value="`0895392685163`">
+                <v-btn @click="copyText()" color="#A6DAF5" text x-small>
+                  <v-icon size="15">mdi-content-copy</v-icon>
                 </v-btn>
               </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      <!-- </v-img> -->
+              <div
+                class="
+                  body-1
+                  font-weight-light
+                  subheader
+                  text--secondary
+                  line-text-second
+                "
+              >
+                Email : alfian.nuha@gmail.com
+              </div>
+            </div>
+            <img
+              alt="sodapos"
+              :width="$vuetify.breakpoint.name !== 'xs' ? '370' : '90%'"
+              :src="require('@/assets/image/contactus.png')"
+            />
+          </v-col>
+          <v-col cols="12" md="7" class="mt-16">
+            <ValidationObserver ref="observer">
+              <v-form class="mt-16">
+                <ValidationProvider
+                  name="Nama Lengkap"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <v-text-field
+                    color="#E69F8C"
+                    label="Nama Lengkap"
+                    v-model="form.name"
+                    :error-messages="errors"
+                    required
+                  >
+                  </v-text-field>
+                </ValidationProvider>
+                <ValidationProvider
+                  name="No Telephone"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <v-text-field
+                    color="#E69F8C"
+                    label="No Telephone"
+                    type="number"
+                    v-model="form.phone"
+                    :error-messages="errors"
+                    required
+                  >
+                  </v-text-field>
+                </ValidationProvider>
+                <ValidationProvider
+                  name="Alamat Email"
+                  rules="required|email"
+                  v-slot="{ errors }"
+                >
+                  <v-text-field
+                    color="#E69F8C"
+                    label="Alamat Email"
+                    v-model="form.address"
+                    :error-messages="errors"
+                    required
+                  >
+                  </v-text-field>
+                </ValidationProvider>
+                <ValidationProvider
+                  name="Isi Pesan"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <v-textarea
+                    color="#E69F8C"
+                    rows="5"
+                    v-model="form.content"
+                    :error-messages="errors"
+                    required
+                  >
+                    <template v-slot:label>
+                      <div>Isi Pesan</div>
+                    </template>
+                  </v-textarea>
+                </ValidationProvider>
+              </v-form>
+            </ValidationObserver>
+            <div>
+              <!-- <v-alert
+                type="error"
+                text
+                dense
+                prominent
+                v-show="error.message.length > 0"
+                v-html="error.message"
+              >
+              </v-alert> -->
+            </div>
+            <div class="text-right">
+              <v-btn
+                elevation="0"
+                class="body-2 text-capitalize white--text mt-5 primary-color"
+                large
+                :loading="process.run"
+                :disabled="process.run"
+                @click="sending"
+              >
+                Kirim Pesan
+              </v-btn>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </section>
 
     <!-- <section id="contact">
@@ -653,6 +798,7 @@
 
 <script>
 import { createSEOMeta } from "@/utils/seo";
+import VanillaTilt from 'vanilla-tilt';
 export default {
   data() {
     return {
@@ -660,7 +806,10 @@ export default {
         request: false,
         website: false,
         description: false,
+        details: false,
+        previewImages: false,
       },
+      imagePreview: "",
       snackbar: {
         state: false,
         color: "",
@@ -700,13 +849,6 @@ export default {
         },
       ],
       projects: [
-        {
-          title: "Website Pernikahan",
-          image: require("@/assets/image/weddingku.png"),
-          website: "https://weddingku.vercel.app/",
-          description: `Website ini saya buat sebenarnya untuk kepentingan pribadi saya agar tidak memakan biaya untuk pembuatan jasa Undangan Pernikahan. Website ini saya buat dengan Framework Nuxt Js dan Vuetify. Webiste ini saya kerjaan dalam kurun waktu satu hari. Karna data di dalamnya masih data kosong atau dummy, maka dari itu lebih cepat pengerjaan nya.`,
-          view: false,
-        },
         {
           title: "Landing Page SODA POS",
           image: require("@/assets/image/sodapos.png"),
@@ -783,46 +925,11 @@ export default {
           view: false,
         },
         {
-          title: "Halaman Admin Vitoads",
-          image: require("@/assets/image/vitoads.png"),
-          website: "https://vito-cms.vercel.app",
-          description: `Halaman Admin Vitoads adalah halaman admin yang di gunakan untuk mengatur penjualan Produk, melakukan Approval Topup, melakukan Approval pembelian Iklan, melakukan approval Withdraw dan pengatuan untuk Aplikasi Mobile nya.`,
-          detail_desc: `Halaman Admin Vitoads adalah halaman admin yang di gunakan untuk mengatur penjualan Produk, melakukan Approval Topup, melakukan Approval pembelian Iklan, melakukan approval Withdraw dan pengatuan untuk Aplikasi Mobile nya.
-          Halaman Admin ini memiliki fitur sebagai berikut : 
-          <p></p> 
-          <ol type="1">
-            <li>API (berbasis PHP)</li>
-            <li>Login</li>
-            <li>Menu Dashboard</li>
-            <li>Menu Iklan</li>
-            <li>Menu Approval Iklan (Video dan Baris)</li>
-            <li>Menu Approval TopUp</li>
-            <li>Menu Approval Withdraw</li>
-            <li>Menu Data User</li>
-            <li>Menu Pengaturan Aplikasi Mobile</li>
-          </ol>`,
-          view: true,
-        },
-        {
-          title: "Halaman Admin CMS KIMI",
-          image: require("@/assets/image/kimi.png"),
-          website: "http://cms.kimi.id",
-          description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
-          detail_desc: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
-          Halaman Admin ini memiliki fitur sebagai berikut : 
-          <p></p> 
-          <ol type="1">
-            <li>API (berbasis PHP)</li>
-            <li>Login</li>
-            <li>Menu Dashboard</li>
-            <li>Menu Course (CRUD Course)</li>
-            <li>Menu Topic (CRUD Topic Course)</li>
-            <li>Menu Activity (CRUD Activity)</li>
-            <li>Menu Question (CRUD Question : Kosakata (Pilihan Gambar), Kosakata (Matching Gambar), Mendengarkan AudioMenyusun Kata/ Menerjemahkan, Merekam Suara, Merekam Suara (Conversation), Membaca (Fill in the blank), Membaca (Paragraph))</li>
-            <li>Menu Data User</li>
-            <li>Menu Pengaturan</li>
-          </ol>`,
-          view: true,
+          title: "Website Pernikahan",
+          image: require("@/assets/image/weddingku.png"),
+          website: "https://weddingku.vercel.app/",
+          description: `Website ini saya buat sebenarnya untuk kepentingan pribadi saya agar tidak memakan biaya untuk pembuatan jasa Undangan Pernikahan. Website ini saya buat dengan Framework Nuxt Js dan Vuetify. Webiste ini saya kerjaan dalam kurun waktu satu hari. Karna data di dalamnya masih data kosong atau dummy, maka dari itu lebih cepat pengerjaan nya.`,
+          view: false,
         },
         {
           title: "Halaman Admin Garonk Signal",
@@ -847,6 +954,28 @@ export default {
           </ol>`,
           view: true,
         },
+        {
+          title: "Halaman Admin CMS KIMI",
+          image: require("@/assets/image/kimi.png"),
+          website: "http://cms.kimi.id",
+          description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
+          detail_desc: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
+          Halaman Admin ini memiliki fitur sebagai berikut : 
+          <p></p> 
+          <ol type="1">
+            <li>API (berbasis PHP)</li>
+            <li>Login</li>
+            <li>Menu Dashboard</li>
+            <li>Menu Course (CRUD Course)</li>
+            <li>Menu Topic (CRUD Topic Course)</li>
+            <li>Menu Activity (CRUD Activity)</li>
+            <li>Menu Question (CRUD Question : Kosakata (Pilihan Gambar), Kosakata (Matching Gambar), Mendengarkan AudioMenyusun Kata/ Menerjemahkan, Merekam Suara, Merekam Suara (Conversation), Membaca (Fill in the blank), Membaca (Paragraph))</li>
+            <li>Menu Data User</li>
+            <li>Menu Pengaturan</li>
+          </ol>`,
+          view: true,
+        },
+        
       ],
       skills: [
         {
@@ -923,6 +1052,11 @@ export default {
         elmnt.scrollIntoView();
       });
     }
+
+    VanillaTilt.init(document.querySelectorAll(".project"), {
+      max: 20,
+      speed: 400
+    });
   },
   methods: {
     copyText(){
@@ -941,12 +1075,14 @@ export default {
       this.snackbar.color = "#FEC386"
       this.snackbar.text = "Content Berhasil di Copy"
     },
+
     goTo(link) {
       window.open(
         link,
         "_blank" // <- This is what makes it open in a new window.
       );
     },
+
     sending() {
       console.log(this.form);
       this.$axios.post(`https://formspree.io/f/xwkajkdl`,this.form)
@@ -954,13 +1090,25 @@ export default {
         console.log(response);
       })
     },
+
+    showDetails(item) {
+      this.dialog.details = true
+      this.detail = item;
+    },
+
+    showImage(images){
+      this.dialog.previewImages = true;
+      this.imagePreview = images
+    },
+
     detailDesc(data){
       console.log(data);
       this.detail = data;
       this.dialog.description = true
     },
+
     preview(data) {
-      this.dialog.website = true;
+      this.dialog.details = true;
       this.detail = data;
     },
   },
@@ -976,13 +1124,13 @@ export default {
   position: absolute;
   width: 50%;
 }
-.project {
+/* .project {
   border-radius: 15px;
   background: #654ea3;
   background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
   background: linear-gradient(to right, #CCE5F1, #FEC386);
   box-shadow: inset -20px -20px 60px #C6D0CC, inset 20px 20px 60px #98D4F5;
-}
+} */
 .header-title {
   font-family: "Kaushan Script", cursive !important;
   font-weight: 500;
@@ -990,9 +1138,9 @@ export default {
   color: #E69F8C;
 }
 .subheader-title {
-  font-family: "Inter;sans-serif", cursive !important;
+  font-family: "Kaushan Script", cursive !important;
   font-weight: 500;
-  /* font-size: 17px; */
+  font-size: 17px;
   color: #E69F8C;
 }
 
@@ -1149,4 +1297,79 @@ export default {
   -webkit-filter: blur(20px);
   filter: blur(20px);
 }
+
+/* CARD */
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+.container .card {
+  position: relative;
+  widows: 280px;
+  height: 400px;
+  margin: 30px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.container .card .content {
+  padding: 20px;
+  text-align: center;
+  transform: translateY(100px);
+  transition: 0.5s;
+}
+
+.container .car:hover .content {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.container .card .content h2 {
+  position: absolute;
+  top: -80px;
+  right: 30px;
+  font-size: 8em;
+  color: rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+}
+
+.container .card .content h3 {
+  font-size: 1.8em;
+  color: #000;
+  z-index: 1;
+}
+
+.container .card .content p {
+  font-size: 1em;
+  color: #000;
+  font-weight: 300;
+}
+
+.container .card .content a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 15px;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
 </style>

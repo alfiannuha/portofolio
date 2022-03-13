@@ -94,7 +94,8 @@ export default {
     generate: false,
     exclude: [
       '/about/**',
-      '/article/**'
+      '/article/**',
+      '/projects/**',
     ],
     defaults: {
       changefreq: 'daily',

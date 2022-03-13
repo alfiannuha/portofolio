@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Header/>
-    <v-sheet class="app" :class="$route.name == 'about' ? 'about' : ''">
+    <v-sheet 
+      class="app" 
+      :class="$route.name == 'about' ? 'about' : ''">
       <Nuxt />
     </v-sheet>
     <v-fab-transition>
@@ -74,8 +76,10 @@ export default {
   background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
   background: linear-gradient(to right, #eaafc8, #654ea3); */
 
+  
   background: #FEC386;
-  background: -webkit-linear-gradient(to right, #FDDEC0, #FEC386);
-  background: linear-gradient(to right, #FDDEC0, #FEC386);
+  background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
+  background: linear-gradient(to right, #CCE5F1, #FEC386);
+       
 }
 </style>
