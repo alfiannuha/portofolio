@@ -315,7 +315,7 @@
             cols="12"
             md="6"
             class="pa-3"
-            v-for="(l,i) in projects.slice(0,4)"
+            v-for="(l,i) in projects"
             :key="i">
 
             <v-hover v-slot="{ hover }">
@@ -855,8 +855,9 @@ export default {
           website: "https://sodapos.com",
           description: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.`,
           detail_desc: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.
-          Landing Page ini Memiliki fitur sebagai berikut : 
-          <p></p> 
+          <span>Landing Page ini memiliki fitur sebagai berikut : </span>
+          <br/>
+          <br/>
           <ol type="1">
             <li>API (berbasis PHP)</li>
             <li>Login</li>
@@ -874,8 +875,11 @@ export default {
           website: "https://affiliate.sodapos.com",
           description: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify.
           `,
-          detail_desc: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify. Landing Page ini Memiliki fitur sebagai berikut : 
-          <p></p> 
+          detail_desc: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify. 
+          
+          <span>Landing Page ini memiliki fitur sebagai berikut : </span>
+          <br/>
+          <br/>
           <ol type="1">
             <li>API (berbasis PHP)</li>
             <li>Login By email atau Sigle Sign On (Google Sign In)</li>
@@ -894,88 +898,61 @@ export default {
           description: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify.
           `,
           detail_desc: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify. 
-          <div @click="detailDesc(l)">Selengkapnya ....</div>
-          Halaman Admin ini memiliki fitur sebagai berikut : 
-          <p></p> 
+          <span>Halaman Admin ini memiliki fitur sebagai berikut : </span>
+          <br/>
+          <br/>
           <ol type="1">
-            <li>API (berbasis PHP)</li>
+            <li>API (berbasis PHP, CodeIgniter 3)</li>
             <li>Login</li>
             <li>Reset Password</li>
             <li>Menu Berita SODA POS</li>
             <li>Menu Dashboard</li>
             <li>Menu Produk (Pengaturan Produk, Bahan, Tipe Penjualan, Kategori Produk, dan ada juga untuk pengaturan Resep)</li>
             <li>Menu Inventory / Stok (Melihat Stok Produk, Melihat Kartu Stok, Melakukan Penyesuaian Stok, Transfer Stok kepada Toko Cabang, Melakukan Stok Opname)</li>
+            <li>Menu Manajemen Meja (Memanajemen Meja dan juga dapat melakukan pengaturan untuk Self Order)</li>
             <li>Menu Monitoring Order (Memonitoring Pesanan)</li>
             <li>Menu Supplier</li>
             <li>Menu Pembelian (Pembelian Produk kepada Supplier)</li>
             <li>Menu Pelanggan</li>
+            <li>Menu User Printer</li>
             <li>Menu Pegawai (Dapat mengatur privilage menu untuk karyawan dan hanya untuk Admin)</li>
+            <li>Menu Laporan Piutang (Berisi data pelanggan yang melakukan pembayaran dengan Hutang)</li>
             <li>Menu Laporan Penjualan (Terdapat lebih dari 5 Laporan Penjualan)</li>
             <li>Menu Shift Kasir (Mengetahui Hasil Penjualan tiap Shift)</li>
             <li>Menu Pengaturan (Mengatur Toko dan Mengatur Bank untuk pembayaran Non-Tunai)</li>
-          </ol>`,
+          </ol>
+          <p>
+          Pada Menu Produk dapat melakukan Import Produk dan disediakan template dari sodapos, sodapos juga menyediakan import data produk dari POS lain antara lain adalah MOKA POS, OLSERA POS, NUTA POS, QASIR POS, PAWOON POS, MAJOO POS
+          <p/>
+          <p>
+          Pada Menu Manajemen Meja sodapos menyediakan Group untuk meja tersebut seperti Outdoor dan Indoor. Da juga Menajemen Meja untuk mengatur meja per group dan ketika membuat meja sodapos ototmatis menyediakan scan QR yang dapat di print dan dapat digunakan untuk Self Order.
+          <p/>`,
           view: true,
         },
         {
-          title: "Halaman Admin Internal SODA POS",
-          image: require("@/assets/image/internal.png"),
-          website: "https://internal.sodapos.com",
-          description: `Halaman Admin Internal SODA POS adalah Halaman untuk kepnetingan internal atau untuk CS SODA POS. Halaman ini menggunakan CodeIgniter 3, JQuery dan Bootstrap`,
-          detail_desc: ``,
-          view: false,
-        },
-        {
-          title: "Website Pernikahan",
-          image: require("@/assets/image/weddingku.png"),
-          website: "https://weddingku.vercel.app/",
-          description: `Website ini saya buat sebenarnya untuk kepentingan pribadi saya agar tidak memakan biaya untuk pembuatan jasa Undangan Pernikahan. Website ini saya buat dengan Framework Nuxt Js dan Vuetify. Webiste ini saya kerjaan dalam kurun waktu satu hari. Karna data di dalamnya masih data kosong atau dummy, maka dari itu lebih cepat pengerjaan nya.`,
-          view: false,
-        },
-        {
-          title: "Halaman Admin Garonk Signal",
-          image: require("@/assets/image/garonk_signal.png"),
-          website: "https://garonk.com",
-          description: `Halaman Admin Garonk Signal ini digunakan untuk membuat sebuah layanan signal, list update waktu signal, dll. Halaman Admin ini dibuat menggunakan CodeIgniter 3, JQuery dan Bootstrap.`,
-          detail_desc: `
-          Halaman Admin Garonk Signal ini digunakan untuk membuat sebuah layanan signal, list update waktu signal, dll. Halaman Admin ini dibuat menggunakan CodeIgniter 3, JQuery dan Bootstrap.
-          Halaman Admin ini memiliki fitur sebagai berikut : 
-          <p></p> 
+          title: "Halaman Kasir SODA POS",
+          image: require("@/assets/image/kasir-sodapos.png"),
+          website: "https://kasir.sodapos.com",
+          description: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify.`,
+          detail_desc: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify. 
+          <br/>
+          <div>Link Apliasi Kasir</div>
+          <a href="https://play.google.com/store/apps/details?id=com.sodapos" target"_blank">Aplikasi Kasir SODA POS (Hanya untuk Tablet)</a>
+          <br/>
+          <br/>
+          <span>Halaman Admin ini memiliki fitur sebagai berikut : </span>
+          <br/>
           <ol type="1">
-            <li>API (berbasis PHP)</li>
+            <li>API (berbasis PHP, CodeIgniter 3)</li>
             <li>Login</li>
-            <li>Menu Dashboard</li>
-            <li>Menu Data User</li>
-            <li>Menu Layanan Signal</li>
-            <li>Menu List Waktu Update Signal</li>
-            <li>Menu Broadcast (digunakan untuk mengirimkan pesan pengumuman kepada pengguna)</li>
-            <li>Menu Signal Order (berisi pesanan pembelian signal)</li>
-            <li>Menu Social Media (untuk mengatur Social media yang tampil pada Aplikasi Mobile)</li>
-            <li>Menu Pengaturan (Pengaturan Terhadap Aplikasi Mobile : Logo, Nama Apliaksi, Close Order)</li>
+            <li>Reset Password</li>
+            <li>Menu Beranda</li>
+            <li>Menu Kasir Kas</li>
+            <li>Menu Close Register</li>
+            <li>Menu Test Printer (Untuk melakukan test pada printer dan terdapat tata caranya, dapat menggunakan printer kabel maupun bluetooth)</li>
           </ol>`,
           view: true,
         },
-        {
-          title: "Halaman Admin CMS KIMI",
-          image: require("@/assets/image/kimi.png"),
-          website: "http://cms.kimi.id",
-          description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
-          detail_desc: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
-          Halaman Admin ini memiliki fitur sebagai berikut : 
-          <p></p> 
-          <ol type="1">
-            <li>API (berbasis PHP)</li>
-            <li>Login</li>
-            <li>Menu Dashboard</li>
-            <li>Menu Course (CRUD Course)</li>
-            <li>Menu Topic (CRUD Topic Course)</li>
-            <li>Menu Activity (CRUD Activity)</li>
-            <li>Menu Question (CRUD Question : Kosakata (Pilihan Gambar), Kosakata (Matching Gambar), Mendengarkan AudioMenyusun Kata/ Menerjemahkan, Merekam Suara, Merekam Suara (Conversation), Membaca (Fill in the blank), Membaca (Paragraph))</li>
-            <li>Menu Data User</li>
-            <li>Menu Pengaturan</li>
-          </ol>`,
-          view: true,
-        },
-        
       ],
       skills: [
         {
