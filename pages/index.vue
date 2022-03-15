@@ -103,89 +103,6 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="dialog.website" width="80%" scrollable persistent>
-      <v-card class="rounded-lg box-shadow">
-        <v-card-title class="body-1">
-          {{ detail.title }}
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                v-on="on"
-                v-bind="attrs"
-                small
-                class="ml-3"
-                color="primary"
-                icon
-                target="_blank"
-                :href="detail.website"
-              >
-                <v-icon>mdi-link</v-icon>
-              </v-btn>
-            </template>
-            <span>Preview in new Window</span>
-          </v-tooltip>
-          <v-spacer></v-spacer>
-          <v-icon color="red" @click="dialog.website = false"
-            >mdi-close-circle</v-icon
-          >
-        </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text style="height: 800px" class="pa-3">
-          <iframe
-            :src="detail.website"
-            frameborder="0"
-            width="100%"
-            height="600"
-          ></iframe>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-
-    <v-dialog v-model="dialog.detail" width="76%" persistent>
-      <v-card class="rounded-lg box-shadow">
-        <v-card-title class="body-1">
-          {{ detail.title }}
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                v-on="on"
-                v-bind="attrs"
-                small
-                class="ml-3"
-                color="primary"
-                icon
-                target="_blank"
-                :href="detail.website"
-              >
-                <v-icon>mdi-link</v-icon>
-              </v-btn>
-            </template>
-            <span>Preview in new Window</span>
-          </v-tooltip>
-          <v-spacer></v-spacer>
-          <v-icon color="red" @click="dialog.detail = false"
-            >mdi-close-circle</v-icon
-          >
-        </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text> </v-card-text>
-      </v-card>
-    </v-dialog>
-
-    <v-dialog v-model="dialog.description" width="76%" scrollable persistent>
-      <v-card class="rounded-lg box-shadow">
-        <v-card-title class="body-1 primary-color white--text">
-          {{ detail.title }}
-          <v-spacer></v-spacer>
-          <v-icon color="white" @click="dialog.description = false">mdi-close-circle</v-icon>
-        </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text class="text-justify subtitle-2 pa-5" style="max-height: 600px"> 
-          <div v-html="detail.detail_desc"></div>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-
     <v-snackbar :color="snackbar.color" v-model="snackbar.state">
       {{ snackbar.text }}
     </v-snackbar>
@@ -271,7 +188,7 @@
           </v-col>
           <v-col cols="12" md="6" class="pr-0 pl-0 custom__margin">
             <v-img
-              alt="sodapos"
+              alt="project"
               height="auto"
               width="500"
               style="margin: auto; z-index: 1"
@@ -367,73 +284,10 @@
                 </v-img>
               </v-card>
             </v-hover>
-
-            <!-- <v-expansion-panels accordion>
-              <v-expansion-panel class="project">
-                <v-expansion-panel-header hide-actions class="pa-0">
-                  <v-hover v-slot="{ hover }">
-                    <v-img :src="l.image">
-                      <v-expand-transition>
-                        <div
-                          v-if="hover"
-                          class="
-                            d-flex
-                            transition-fast-in-fast-out
-                            grey
-                            darken-4
-                            v-card--reveal
-                            text-h2
-                            white--text
-                          "
-                          style="height: 100%"
-                        >
-                          <v-btn @click="preview(l)">
-                            Preview
-                            <v-icon right>mdi-open-in-new</v-icon>
-                          </v-btn>
-                        </div>
-                      </v-expand-transition>
-                      <template v-slot:placeholder>
-                        <v-row
-                          class="fill-height ma-0"
-                          align="center"
-                          justify="center"
-                        >
-                          <v-progress-circular
-                            indeterminate
-                            color="grey lighten-5"
-                          >
-                          </v-progress-circular>
-                        </v-row>
-                      </template>
-                    </v-img>
-                  </v-hover>
-                </v-expansion-panel-header>
-                <v-divider></v-divider>
-                <v-expansion-panel-header>
-                  <template>
-                    <div class="white--text" style="font-weight:500">{{ l.title }}</div>
-                  </template>
-                  <template v-slot:actions>
-                    <v-icon color="white"> mdi-chevron-down </v-icon>
-                  </template>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content class="pt-5 white--text">
-                  <div v-html="l.description"></div>
-                  <div
-                    style="width: 150px !important"
-                    class="mt-3 text-first hover-link cursor-pointer"
-                    v-show="l.view"
-                    @click="detailDesc(l)">
-                    Selengkapnya ...
-                  </div>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels> -->
           </v-col>
         </v-row>
 
-        <v-btn @click="$router.push('/projects')" text color="red" class="mt-5 mr-7 text-capitalize">
+        <v-btn @click="$router.push('/projects')" text color="red" class="mt-5 mr-7 text-capitalize text-center">
           Show More Project
         </v-btn>
       </v-container>
@@ -459,7 +313,7 @@
           </v-col>
           <v-col cols="12" md="6" class="pr-0 pl-0 custom__margin">
             <v-img
-              alt="sodapos"
+              alt="Study"
               height="auto"
               width="500"
               style="margin: auto; z-index: 1"
@@ -659,7 +513,7 @@
               </div>
             </div>
             <img
-              alt="sodapos"
+              alt="ContactUs"
               :width="$vuetify.breakpoint.name !== 'xs' ? '370' : '90%'"
               :src="require('@/assets/image/contactus.png')"
             />
@@ -730,15 +584,6 @@
               </v-form>
             </ValidationObserver>
             <div>
-              <!-- <v-alert
-                type="error"
-                text
-                dense
-                prominent
-                v-show="error.message.length > 0"
-                v-html="error.message"
-              >
-              </v-alert> -->
             </div>
             <div class="text-right">
               <v-btn
@@ -756,43 +601,6 @@
         </v-row>
       </v-container>
     </section>
-
-    <!-- <section id="contact">
-      <v-container
-        style=""
-        :class="$vuetify.breakpoint.mdAndDown ? 'py-6' : 'py-16 my-16'"
-      >
-      <v-row align="center" justify="center">
-          <v-col cols="12" md="8" class="px-15 text-center">
-            <p
-              class="
-                mt-7
-                text-h5
-                font-weight-light
-                subheader
-                text--secondary
-                font-italic
-                line-text-second
-              "
-            >
-              Contact Me
-            </p>
-          </v-col>
-        </v-row>
-        <v-row class="pa-3 py-12" align="center" no-gutters>
-          <form>
-              <v-text-field
-                outlined
-                v-model="form.email"
-                type="email"
-                name="_replyto">
-              </v-text-field>
-              <v-textarea v-model="form.message" name="message"></v-textarea>
-            <v-btn class="white--text" style="background: #654ea3;background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);background: linear-gradient(to right, #eaafc8, #654ea3);" @click="sending">Send</v-btn>
-          </form>
-        </v-row>
-      </v-container>
-    </section> -->
   </div>
 </template>
 
@@ -892,7 +700,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Admin User SODA POS",
+          title: "Admin User SODA POS",
           image: require("@/assets/image/admin.png"),
           website: "https://admin.sodapos.com",
           description: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify.
@@ -930,7 +738,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Kasir SODA POS",
+          title: "Kasir SODA POS",
           image: require("@/assets/image/kasir-sodapos.png"),
           website: "https://kasir.sodapos.com",
           description: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify.`,
@@ -1078,12 +886,6 @@ export default {
       this.imagePreview = images
     },
 
-    detailDesc(data){
-      console.log(data);
-      this.detail = data;
-      this.dialog.description = true
-    },
-
     preview(data) {
       this.dialog.details = true;
       this.detail = data;
@@ -1101,13 +903,7 @@ export default {
   position: absolute;
   width: 50%;
 }
-/* .project {
-  border-radius: 15px;
-  background: #654ea3;
-  background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
-  background: linear-gradient(to right, #CCE5F1, #FEC386);
-  box-shadow: inset -20px -20px 60px #C6D0CC, inset 20px 20px 60px #98D4F5;
-} */
+
 .header-title {
   font-family: "Kaushan Script", cursive !important;
   font-weight: 500;
@@ -1120,19 +916,6 @@ export default {
   font-size: 17px;
   color: #E69F8C;
 }
-
-/* CUSTOME */
-/* IMG WRAP ON */
-/* @media only screen and (min-width: 992px) and (max-height: 800px){}
-.hero-img-wrap {
-  margin-bottom: 48px;
-  min-width: 280px;
-  min-height: 280px;
-  width: 280px;
-  height: 280px;
-  max-width: 280px;
-  max-height: 280px;
-} */
 
 .hero-img-wrap {
   will-change: opacity;
@@ -1286,67 +1069,5 @@ export default {
   z-index: 1;
 }
 
-.container .card {
-  position: relative;
-  widows: 280px;
-  height: 400px;
-  margin: 30px;
-  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5px);
-}
-
-.container .card .content {
-  padding: 20px;
-  text-align: center;
-  transform: translateY(100px);
-  transition: 0.5s;
-}
-
-.container .car:hover .content {
-  transform: translateY(0px);
-  opacity: 1;
-}
-
-.container .card .content h2 {
-  position: absolute;
-  top: -80px;
-  right: 30px;
-  font-size: 8em;
-  color: rgba(0, 0, 0, 0.05);
-  pointer-events: none;
-}
-
-.container .card .content h3 {
-  font-size: 1.8em;
-  color: #000;
-  z-index: 1;
-}
-
-.container .card .content p {
-  font-size: 1em;
-  color: #000;
-  font-weight: 300;
-}
-
-.container .card .content a {
-  position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  margin-top: 15px;
-  background: #fff;
-  color: #000;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
 
 </style>

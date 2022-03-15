@@ -210,7 +210,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Admin User SODA POS",
+          title: "Admin User SODA POS",
           image: require("@/assets/image/admin.png"),
           website: "https://admin.sodapos.com",
           description: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify.
@@ -248,7 +248,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Kasir SODA POS",
+          title: "Kasir SODA POS",
           image: require("@/assets/image/kasir-sodapos.png"),
           website: "https://kasir.sodapos.com",
           description: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify.`,
@@ -272,7 +272,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Admin Internal SODA POS",
+          title: "Admin Internal SODA POS",
           image: require("@/assets/image/internal.png"),
           website: "https://internal.sodapos.com",
           description: `Halaman Admin Internal SODA POS adalah Halaman untuk kepnetingan internal atau untuk CS SODA POS. Halaman ini menggunakan CodeIgniter 3, JQuery dan Bootstrap`,
@@ -312,7 +312,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Admin CMS KIMI",
+          title: "Admin CMS KIMI",
           image: require("@/assets/image/kimi.png"),
           website: "http://cms.kimi.id",
           description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
@@ -339,7 +339,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Admin CMS EPOT",
+          title: "Admin CMS EPOT",
           image: require("@/assets/image/cms-epot.png"),
           website: "https://cms.epot.co.id/",
           description: `Halaman Admin CMS EPOT adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, Structure, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
@@ -368,7 +368,7 @@ export default {
           view: true,
         },
         {
-          title: "Halaman Enduser",
+          title: "EPOT Enduser",
           image: require("@/assets/image/epot-enduser.png"),
           website: "https://epot.yec.co.id/",
           description: `Halaman adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
@@ -434,12 +434,6 @@ export default {
     showImage(images){
       this.dialog.previewImages = true;
       this.imagePreview = images
-    },
-
-    detailDesc(data){
-      console.log(data);
-      this.detail = data;
-      this.dialog.description = true
     },
 
     preview(data) {

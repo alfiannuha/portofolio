@@ -12,17 +12,6 @@ body {
   }
 }
 
-/* CUSTOM HEIGHT TOOLBAR IN PUBLIC HEADER NAV  */
-/* .v-sheet.theme--light.v-toolbar.v-app-bar.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--is-scrolled.header {
-  top: -20px;
-}
-
-.v-toolbar__content {
-  height: 74px !important;
-  margin-top: 17px !important;
-  padding-bottom: 40px !important;
-} */
-
 .primary-color {
   background: #654ea3;
   background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
@@ -46,8 +35,6 @@ body {
   background: #654ea3;
   background: -webkit-linear-gradient(to right, #CCE5F1, #FEC386);
   background: linear-gradient(to right, #CCE5F1, #FEC386);
-  /* background-color: #ff4757; */
-  /* background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%,rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,transparent 75%, transparent) */
 }
 
 /* Chrome, Safari, Edge, Opera */
