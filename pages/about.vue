@@ -257,7 +257,7 @@ export default {
         url: "about",
         title: "Tentang",
         description: "Alfian An - Naufal Nuha",
-        image: require("@/assets/logo/logo_2.png"),
+        image: require("@/assets/logo/logo.png"),
       },
     };
   },

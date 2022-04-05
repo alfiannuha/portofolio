@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog.request" width="500" persistent>
       <v-card class="rounded-lg box-shadow">
         <v-card-title class="body-1">
-          Please request with social media below
+          Silahkan request dengan media sosial di bawah ini
           <v-spacer></v-spacer>
           <v-icon color="red" @click="dialog.request = false">mdi-close-circle</v-icon>
         </v-card-title>
@@ -14,14 +14,14 @@
               v-for="(l, index) in social_media"
               :key="index">
               <div class="text-center" @click="goTo(l.link)">
-                <img :alt="l.title" class="cursor-pointer" width="50" height="50" :src="l.icon" />
+                <img :alt="l.title" class="cursor-pointer" width="50" height="45" :src="l.icon" />
               </div>
             </v-col>
           </v-row>
           <div 
-            class="mt-5 pa-2 white--text rounded-lg primary-color" 
+            class="mt-5 pa-3 white--text rounded-lg primary-color text-justify" 
             style="font-size: 16px;">
-            Write clearly your request, in addition to whatsapp and telegram, include your number where we can be contacted
+            Tulis dengan jelas permintaan Anda, selain whatsapp dan telegram, sertakan nomor Anda yang bisa kami hubungi
           </div>
         </v-card-text>
       </v-card>
@@ -140,7 +140,7 @@ export default {
         {
           title: "Email",
           link: `https://mail.google.com/mail/?view=cm&fs=1&to=alfian.nuha@gmail.com&su=[PROJECT] Request Project&body=Isi keterangan permintaan Anda dengan jelas dan sertakan nomor telpon atau nomor Whatsapp yang dapat kami hubungi&bcc=alfian.nuha@gmail.com`,
-          icon: require("@/assets/sosmed/gmail.png"),
+          icon: require("@/assets/sosmed/gmail_.png"),
         },
         {
           title: "Linkedin",

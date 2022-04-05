@@ -12,7 +12,7 @@
                   <v-col cols="12" md="10">
                     <div class="py-9">
                       <v-img alt="sodapos"
-                        :src="require('@/assets/logo/logo_2.png')"
+                        :src="require('@/assets/logo/logo.png')"
                         max-height="250"
                         max-width="250"
                         class="ma-auto">
@@ -58,7 +58,7 @@
           url: '',
           title: '404',
           description: 'Halaman tidak ditemukan',
-          image: require('@/assets/logo/logo_2.png'),
+          image: require('@/assets/logo/logo.png'),
         }
       }
     },

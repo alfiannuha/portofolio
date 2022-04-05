@@ -24,17 +24,17 @@ export default {
       { name: "description", content: 'Hai, saya Nuha, seorang web development yang bekerja di Yogyakarata. Saya tinggal di Yogyakarta dan memiliki specialisasi membuat Aplikasi WEB / Halaman Admin sebuah company.'},
     ],
     link: [
-      { rel: 'shortcut icon', type: 'image/x-icon', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '16x16', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '32x32', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '64x64', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '120x120', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '144x144', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '152x152', href: '/logo_2.png' },
-      { rel: 'shortcut icon', type: 'image/png', sizes: '192x192', href: '/logo_2.png' },
-      { rel: 'apple-touch-icon', href: '/logo_2.png' },
-      { rel: 'mask-icon', href: '/logo_2.png' },
-      { rel: 'ms-tile-image', href: '/logo_2.png' }
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '16x16', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '32x32', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '64x64', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '120x120', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '144x144', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '152x152', href: '/logo.png' },
+      { rel: 'shortcut icon', type: 'image/png', sizes: '192x192', href: '/logo.png' },
+      { rel: 'apple-touch-icon', href: '/logo.png' },
+      { rel: 'mask-icon', href: '/logo.png' },
+      { rel: 'ms-tile-image', href: '/logo.png' }
     ]
   },
 

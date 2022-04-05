@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog.request" width="500" persistent>
       <v-card class="rounded-lg box-shadow">
         <v-card-title class="body-1">
-          Please request with social media below
+          Silahkan request dengan media sosial di bawah ini
           <v-spacer></v-spacer>
           <v-icon color="red" @click="dialog.request = false"
             >mdi-close-circle</v-icon
@@ -23,7 +23,7 @@
                   :alt="l.title"
                   class="cursor-pointer"
                   width="50"
-                  height="50"
+                  height="45"
                   :src="l.icon"
                 />
               </div>
@@ -32,8 +32,7 @@
           <div
             class="mt-5 pa-2 white--text rounded-lg primary-color"
             style="font-size: 16px">
-            Write clearly your request, in addition to whatsapp and telegram,
-            include your number where we can be contacted
+            Tulis dengan jelas permintaan Anda, selain whatsapp dan telegram, sertakan nomor Anda yang bisa kami hubungi
           </div>
         </v-card-text>
       </v-card>
@@ -326,17 +325,6 @@
         <!-- SKILL -->
         <v-row no-gutters class="mt-5">
           <v-col cols="12" md="2" class="pa-10">
-            <v-img :src="require('@/assets/logo/php.png')">
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="grey lighten-5">
-                  </v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-            <div class="text-center mt-3">PHP</div>
-          </v-col>
-          <v-col cols="12" md="2" class="pa-10">
             <v-img :src="require('@/assets/logo/html.png')">
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
@@ -370,7 +358,7 @@
             <div class="text-center mt-3">Javascript</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img :src="require('@/assets/logo/vue.png')">
+            <v-img :src="require('@/assets/logo/php.png')">
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular indeterminate color="grey lighten-5">
@@ -378,29 +366,7 @@
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-3">Vue JS</div>
-          </v-col>
-          <v-col cols="12" md="2" class="pa-10">
-            <v-img :src="require('@/assets/logo/nuxt.png')">
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="grey lighten-5">
-                  </v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-            <div class="text-center mt-3">Nuxt JS</div>
-          </v-col>
-          <v-col cols="12" md="2" class="pa-10">
-            <v-img :src="require('@/assets/logo/next.png')">
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="grey lighten-5">
-                  </v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-            <div class="text-center mt-16 pt-6">Next JS</div>
+            <div class="text-center mt-3">PHP</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
             <v-img :src="require('@/assets/logo/mysql.png')">
@@ -425,7 +391,7 @@
             <div class="text-center mt-5">CodeIgniter</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
-            <v-img :src="require('@/assets/logo/laravel.png')">
+            <v-img :src="require('@/assets/logo/vue.png')">
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular indeterminate color="grey lighten-5">
@@ -433,9 +399,18 @@
                 </v-row>
               </template>
             </v-img>
-            <div class="text-center mt-10">
-              <v-badge content="Ongoing" color="green"> Laravel </v-badge>
-            </div>
+            <div class="text-center mt-3">Vue JS</div>
+          </v-col>
+          <v-col cols="12" md="2" class="pa-10">
+            <v-img :src="require('@/assets/logo/nuxt.png')">
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
+                  </v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+            <div class="text-center mt-3">Nuxt JS</div>
           </v-col>
           <v-col cols="12" md="2" class="pa-10">
             <v-img width="400" :src="require('@/assets/logo/bootstrap.png')">
@@ -458,6 +433,32 @@
               </template>
             </v-img>
             <div class="text-center mt-5">Vuetify</div>
+          </v-col>
+          <v-col cols="12" md="2" class="pa-10">
+            <v-img :src="require('@/assets/logo/next.png')">
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
+                  </v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+            <div class="text-center mt-16 pt-6">
+              <v-badge content="Ongoing" color="green"> Next JS </v-badge>
+            </div>
+          </v-col>
+          <v-col cols="12" md="2" class="pa-10">
+            <v-img :src="require('@/assets/logo/laravel.png')">
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5">
+                  </v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+            <div class="text-center mt-10">
+              <v-badge content="Ongoing" color="green"> Laravel </v-badge>
+            </div>
           </v-col>
         </v-row>
       </v-container>
@@ -520,7 +521,7 @@
           </v-col>
           <v-col cols="12" md="7" class="mt-16">
             <ValidationObserver ref="observer">
-              <v-form class="mt-16">
+              <v-form class="mt-16" name="submit-to-google-sheet">
                 <ValidationProvider
                   name="Nama Lengkap"
                   rules="required"
@@ -529,6 +530,8 @@
                   <v-text-field
                     color="#E69F8C"
                     label="Nama Lengkap"
+                    id="name"
+                    name="name"
                     v-model="form.name"
                     :error-messages="errors"
                     required
@@ -543,6 +546,8 @@
                   <v-text-field
                     color="#E69F8C"
                     label="No Telephone"
+                    id="telephone"
+                    name="telephone"
                     type="number"
                     v-model="form.phone"
                     :error-messages="errors"
@@ -551,14 +556,16 @@
                   </v-text-field>
                 </ValidationProvider>
                 <ValidationProvider
-                  name="Alamat Email"
+                  name="Email"
                   rules="required|email"
                   v-slot="{ errors }"
                 >
                   <v-text-field
                     color="#E69F8C"
-                    label="Alamat Email"
-                    v-model="form.address"
+                    label="Email"
+                    id="email"
+                    name="email"
+                    v-model="form.email"
                     :error-messages="errors"
                     required
                   >
@@ -572,6 +579,8 @@
                   <v-textarea
                     color="#E69F8C"
                     rows="5"
+                    id="message"
+                    name="message"
                     v-model="form.content"
                     :error-messages="errors"
                     required
@@ -629,7 +638,7 @@ export default {
       form: {
         name: "",
         phone: "",
-        address: "",
+        email: "",
         content: "",
       },
       show: false,
@@ -638,7 +647,7 @@ export default {
         {
           title: "Email",
           link: `https://mail.google.com/mail/?view=cm&fs=1&to=alfian.nuha@gmail.com&su=[PROJECT] Request Project&body=Isi keterangan permintaan Anda dengan jelas dan sertakan nomor telpon atau nomor Whatsapp yang dapat kami hubungi&bcc=alfian.nuha@gmail.com`,
-          icon: require("@/assets/sosmed/gmail.png"),
+          icon: require("@/assets/sosmed/gmail_.png"),
         },
         {
           title: "Linkedin",
@@ -797,7 +806,7 @@ export default {
         url: "",
         title: "Alfian An - Naufal Nuha - Beranda",
         description: "Portofolio Alfian An - Naufal Nuha",
-        image: require("@/assets/logo/logo_2.png"),
+        image: require("@/assets/logo/logo.png"),
       },
     };
   },
@@ -869,11 +878,40 @@ export default {
     },
 
     sending() {
-      console.log(this.form);
-      this.$axios.post(`https://formspree.io/f/xwkajkdl`,this.form)
-      .then((response) => {
-        console.log(response);
-      })
+      // console.log(this.form);
+      // this.$axios.post(`https://formspree.io/f/xwkajkdl`,this.form)
+      // .then(response => 
+      //   this.snackbar = {
+      //     state: true,
+      //     color: "green",
+      //     text: "Pesan Berhasil Dikirim",
+      // })
+      // .catch(error => 
+      //   this.snackbar = {
+      //     state: true,
+      //     color: "red",
+      //     text: "Pesan Gagal Dikirim",
+      // })
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzGrcZlBmRDkIKMEXci0X0S6C1Dz98MKdvxY-5HFctkK_xpdIwe4z7ufzE0Bd_ABNCb/exec'
+      const form = document.forms['submit-to-google-sheet']
+
+      var formdata = new FormData(form)
+      formdata.append('datetime', new Date().toLocaleString())
+      
+      fetch(scriptURL, { method: 'POST', body: formdata})
+        .then(response => 
+        this.snackbar = {
+          state: true,
+          color: "green",
+          text: "Pesan Berhasil Dikirim",
+        })
+        .catch(error => 
+        this.snackbar = {
+          state: true,
+          color: "red",
+          text: "Pesan Gagal Dikirim",
+        })
     },
 
     showDetails(item) {

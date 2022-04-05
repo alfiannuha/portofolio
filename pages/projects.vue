@@ -6,7 +6,7 @@
       </v-img>
     </v-dialog>
 
-    <v-dialog v-model="dialog.details" width="85%" scrollable persistent>
+    <v-dialog v-model="dialog.details" width="90%" scrollable persistent>
       <v-card class="rounded-lg box-shadow">
         <v-card-title class="body-1">
           {{ detail.title }}
@@ -31,12 +31,12 @@
           <v-icon color="red" @click="dialog.details = false">mdi-close-circle</v-icon>
         </v-card-title>
         <v-divider></v-divider>
-        <v-card-text style="height: 450px" class="pa-2">
+        <v-card-text style="height: 500px" class="pa-2">
           <div class="d-flex">
             <div
               class="mr-5 pt-2"
               style="flex: 1">
-              <v-img :src="detail.image" width="650" height="350" class="cursor-pointer" @click="showImage(detail.image)">
+              <v-img :src="detail.image_preview" width="650" height="350" class="cursor-pointer" @click="showImage(detail.image_preview)">
                 <template v-slot:placeholder>
                   <v-row
                     class="fill-height ma-0"
@@ -45,12 +45,53 @@
                   >
                     <v-progress-circular
                       indeterminate
-                      color="grey lighten-5"
+                      color="#FEC386"
                     >
                     </v-progress-circular>
                   </v-row>
                 </template>
               </v-img>
+
+              <v-divider></v-divider>
+
+              <v-list nav color="background" flat class="mt-3">
+                <v-list-item-group
+                  mandatory
+                  v-model="selected">
+                  <v-row no-gutters>
+                    <template>
+                      <v-col 
+                        v-for="(recent, i) in detail.image_others" :key="i" 
+                        @click="detail.image_preview = recent"
+                        class="mr-4"
+                        cols="12" 
+                        md="2"
+                        :style="recent == detail.image_others[selected] ? 'opacity:1;border: 2px solid #F05326' : 'opacity:.6'">
+                        <v-list-item class="pa-0">
+                          <v-img 
+                            :src="recent"
+                            class="cursor-pointer" 
+                            width="150" 
+                            height="60">
+                            <template slot="placeholder">
+                              <v-row
+                                class="fill-height"
+                                no-gutters
+                                align="center"
+                                justify="center">
+                                <v-progress-circular
+                                  indeterminate
+                                  color="#F05326">
+                                </v-progress-circular>
+                              </v-row> 
+                            </template>
+                          </v-img>
+                        </v-list-item>
+                      </v-col>
+                    </template>
+                  </v-row>
+                </v-list-item-group>
+              </v-list>
             </div>
             <div
               style="width: 600px;overflow: auto;height: 430px;line-height: 1.5;text-align: justify;padding:  10px 10px 0 0"
@@ -164,12 +205,18 @@ export default {
         details: false,
         previewImages: false,
       },
+      selected: null,
       imagePreview: "",
       detail: {},
       projects: [
         {
           title: "Landing Page SODA POS",
           image: require("@/assets/image/sodapos.png"),
+          image_preview: require("@/assets/image/sodapos.png"),
+          image_others: [
+            require("@/assets/image/sodapos.png"),
+            require("@/assets/image/dashboard-sodapos.png"),
+          ],
           website: "https://sodapos.com",
           description: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.`,
           detail_desc: `Landing Page SODA POS ini adalah website produk kantor tentang penjualan Aplikasi Kasir. Saya disini melanjutkan beberapa kekurangan pada website ini dan melakukan maintenance. Landing Page ini di buat dengan Framework Nuxt JS dan Vuetify, serta beberapa plugins yang tersedia.
@@ -190,6 +237,11 @@ export default {
         {
           title: "Landing Page Affiliate SODA POS",
           image: require("@/assets/image/affiliate.png"),
+          image_preview: require("@/assets/image/affiliate.png"),
+          image_others: [
+            require("@/assets/image/affiliate.png"),
+            require("@/assets/image/dashboard-affiliate.png"),
+          ],
           website: "https://affiliate.sodapos.com",
           description: `Landing Page Affiliate SODA POS ini adalah website tentang pengajakan kepada semua orang untuk menjadi Affiliate di SODA POS. Disini saya mendevelop atau membuat dari awal di bantu orang beberapa temna kantor saya. Landing Page ini dibuat menggunakan Nuxt JS dan vuetify.
           `,
@@ -212,6 +264,11 @@ export default {
         {
           title: "Admin User SODA POS",
           image: require("@/assets/image/admin.png"),
+          image_preview: require("@/assets/image/admin.png"),
+          image_others: [
+            require("@/assets/image/admin.png"),
+            require("@/assets/image/dashboard-admin.png"),
+          ],
           website: "https://admin.sodapos.com",
           description: `Halaman Admin User SODA POS adalah halaman untuk mengatur toko Anda dari membuat produk, melihat stok, melihat grafik penjualan, melihat laporan penjualan, laporan shift untuk tiap kasir dan juga dapat melakukan Export Excel untuk setiap data. Di Halaman Admin ini juga dapat memberikan sebuah privilage kepada setiap karyawan. Halaman Admin ini menggunakan Framework Vue JS dan Vuetify.
           `,
@@ -250,6 +307,12 @@ export default {
         {
           title: "Kasir SODA POS",
           image: require("@/assets/image/kasir-sodapos.png"),
+          image_preview: require("@/assets/image/kasir-sodapos.png"),
+          image_others: [
+            require("@/assets/image/kasir-sodapos.png"),
+            require("@/assets/image/dashboard-kasir.png"),
+            require("@/assets/image/menu-kasir.png"),
+          ],
           website: "https://kasir.sodapos.com",
           description: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify.`,
           detail_desc: `Halaman Kasir SODA POS adalah halaman untuk melakukan penjualan. Halaman Kasir ini menggunakan Framework Vue JS dan Vuetify. 
@@ -274,6 +337,11 @@ export default {
         {
           title: "Admin Internal SODA POS",
           image: require("@/assets/image/internal.png"),
+          image_preview: require("@/assets/image/internal.png"),
+          image_others: [
+            require("@/assets/image/internal.png"),
+            require("@/assets/image/internal-sodapos.png"),
+          ],
           website: "https://internal.sodapos.com",
           description: `Halaman Admin Internal SODA POS adalah Halaman untuk kepnetingan internal atau untuk CS SODA POS. Halaman ini menggunakan CodeIgniter 3, JQuery dan Bootstrap`,
           detail_desc: ``,
@@ -282,13 +350,17 @@ export default {
         {
           title: "Website Pernikahan",
           image: require("@/assets/image/weddingku.png"),
-          website: "https://weddingku.vercel.app/",
+          image_preview: require("@/assets/image/weddingku.png"),
+          image_others: [],
+          website: "https://weddingku.vercel.app/", //https://wedding.portofolionuha.com/
           description: `Website ini saya buat sebenarnya untuk kepentingan pribadi saya agar tidak memakan biaya untuk pembuatan jasa Undangan Pernikahan. Website ini saya buat dengan Framework Nuxt Js dan Vuetify. Webiste ini saya kerjaan dalam kurun waktu satu hari. Karna data di dalamnya masih data kosong atau dummy, maka dari itu lebih cepat pengerjaan nya.`,
           view: false,
         },
         {
           title: "Halaman Admin Garonk Signal",
           image: require("@/assets/image/garonk_signal.png"),
+          image_preview: require("@/assets/image/garonk_signal.png"),
+          image_others: [],
           website: "https://garonk.com",
           description: `Halaman Admin Garonk Signal ini digunakan untuk membuat sebuah layanan signal, list update waktu signal, dll. Halaman Admin ini dibuat menggunakan CodeIgniter 3, JQuery dan Bootstrap.`,
           detail_desc: `
@@ -314,6 +386,11 @@ export default {
         {
           title: "Admin CMS KIMI",
           image: require("@/assets/image/kimi.png"),
+          image_preview: require("@/assets/image/kimi.png"),
+          image_others: [
+            require("@/assets/image/kimi.png"),
+            require("@/assets/image/kimi-topic.png"),
+          ],
           website: "http://cms.kimi.id",
           description: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
           detail_desc: `Halaman Admin CMS KIMI adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
@@ -341,6 +418,8 @@ export default {
         {
           title: "Admin CMS EPOT",
           image: require("@/assets/image/cms-epot.png"),
+          image_preview: require("@/assets/image/cms-epot.png"),
+          image_others: [],
           website: "https://cms.epot.co.id/",
           description: `Halaman Admin CMS EPOT adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, Structure, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
           detail_desc: `Halaman Admin CMS EPOT adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, Structure, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify. 
@@ -370,6 +449,8 @@ export default {
         {
           title: "EPOT Enduser",
           image: require("@/assets/image/epot-enduser.png"),
+          image_preview: require("@/assets/image/epot-enduser.png"),
+          image_others: [],
           website: "https://epot.yec.co.id/",
           description: `Halaman adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.`,
           detail_desc: `Halaman adalah sebuah aplikasi untuk membuat soal, mengatur pengguna. Ada berbagai jenis soal yang bisa dibuat dari Halaman Admin ini, seperti Listening, Reading, dll. Halaman Admin ini menggunakan framework Vue JS dan vuetify.
@@ -402,7 +483,7 @@ export default {
         url: "projects",
         title: "Project Saya",
         description: "Alfian An - Naufal Nuha",
-        image: require("@/assets/logo/logo_2.png"),
+        image: require("@/assets/logo/logo.png"),
       },
     }
   },
@@ -426,11 +507,6 @@ export default {
       );
     },
 
-    showDetails(item) {
-      this.dialog.details = true
-      this.detail = item;
-    },
-
     showImage(images){
       this.dialog.previewImages = true;
       this.imagePreview = images
@@ -438,6 +514,12 @@ export default {
 
     preview(data) {
       this.dialog.details = true;
+      if (data.image_others.length > 1) {
+        this.selected = 0
+        data.image_preview = data.image_others[0]
+      }
+
+      console.log(data);
       this.detail = data;
     },
   }
