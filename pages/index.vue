@@ -616,6 +616,7 @@
 <script>
 import { createSEOMeta } from "@/utils/seo";
 import VanillaTilt from 'vanilla-tilt';
+// import moment from 'moment';
 export default {
   data() {
     return {
@@ -893,25 +894,84 @@ export default {
       //     text: "Pesan Gagal Dikirim",
       // })
 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzGrcZlBmRDkIKMEXci0X0S6C1Dz98MKdvxY-5HFctkK_xpdIwe4z7ufzE0Bd_ABNCb/exec'
-      const form = document.forms['submit-to-google-sheet']
+      // const scriptURL = 'https://script.google.com/macros/s/AKfycbzGrcZlBmRDkIKMEXci0X0S6C1Dz98MKdvxY-5HFctkK_xpdIwe4z7ufzE0Bd_ABNCb/exec'
+      // const form = document.forms['submit-to-google-sheet']
 
-      var formdata = new FormData(form)
-      formdata.append('datetime', new Date().toLocaleString())
+      // var formdata = new FormData(form)
+      // formdata.append('datetime', new Date().toLocaleString())
       
-      fetch(scriptURL, { method: 'POST', body: formdata})
-        .then(response => 
+      // fetch(scriptURL, { method: 'POST', body: formdata})
+      // .then(response => {
+      //   console.log(response);
+      // })
+
+      // SEND TELEGRAM MESSAGE
+      const token = '1656843357:AAHxPBwUlvz6Uu9y-tQTO3x69h-COuven6U';
+      const chatId = '-658452539';
+
+      let message = "";
+        message += "Nama : " + this.form.name + "\n";
+        message += "Email : " + this.form.email + "\n";
+        message += "Tanggal : " + new Date().toString() + "\n";
+        message += "No Telephone : " + this.form.phone + "\n\n";
+        message += "Pesan : " + this.form.content + "\n";
+    
+      const dataMessageTelegram = {
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'html',
+      }
+    
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataMessageTelegram),
+      }).then(res => {
         this.snackbar = {
           state: true,
           color: "green",
           text: "Pesan Berhasil Dikirim",
-        })
-        .catch(error => 
+        }
+      }).catch(err => {
         this.snackbar = {
           state: true,
           color: "red",
           text: "Pesan Gagal Dikirim",
-        })
+        }
+      })
+      // SEND TELEGRAM MESSAGE END
+
+      // CREATE DATA REQUEST
+      // let dataMessageRequest = {
+      //   request_name : this.form.name,
+      //   request_mobilephone : this.form.phone,
+      //   request_email : this.form.email,
+      //   request_note : this.form.content,
+      //   request_date : new Date().toString()
+      // }
+
+      // fetch(`http://localhost/uas-prakweb/admin/request/create`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: dataMessageRequest,
+      // }).then(res => {
+      //   this.snackbar = {
+      //     state: true,
+      //     color: "green",
+      //     text: "Pesan Berhasil Dikirim",
+      //   }
+      // }).catch(err => {
+      //   this.snackbar = {
+      //     state: true,
+      //     color: "red",
+      //     text: "Pesan Gagal Dikirim",
+      //   }
+      // })
+      // CREATE DATA REQUEST
     },
 
     showDetails(item) {
